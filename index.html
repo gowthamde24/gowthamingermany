@@ -1,200 +1,216 @@
+
+
+
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gowtham IN Germany</title>
-
-  <!-- Tailwind CDN -->
+  <title>Gowtham IN Germany | Portfolio</title>
+  
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Tailwind custom config for depth & animations -->
+  
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            primary: '#dc2626', // red-600
+            brand: '#e11d48', // Rose-600
+            dark: '#0f172a',  // Slate-900
           },
-          boxShadow: {
-            depth: '0 25px 50px rgba(220,38,38,0.25)',
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
           },
         },
       },
     };
   </script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .glass-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(225, 29, 72, 0.5);
+    }
+  </style>
 </head>
 
-<body class="bg-black text-white min-h-screen overflow-x-hidden">
+<body class="bg-dark text-slate-200 antialiased selection:bg-brand selection:text-white">
 
-  <!-- HERO SECTION -->
-  <section class="relative flex items-center justify-center min-h-screen px-6 overflow-hidden">
-
-    <!-- BACKGROUND IMAGE -->
-    <div 
-      class="absolute inset-0 bg-center bg-cover scale-110 md:scale-100"
-      style="background-image: url('./assets/gowtham bw.jpg'); background-position: center top;">
-    </div>
-
-    <!-- Dark overlay for text readability -->
-    <div class="absolute inset-0 bg-black/70"></div>
-
-    <!-- Soft glow overlay -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(220,38,38,0.35),transparent_65%)]"></div>
-
-    <!-- CONTENT -->
-    <div class="relative text-center space-y-6 transform transition hover:scale-105 z-10">
-      <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)]">
-        Gowtham <span class="text-red-500">IN Germany</span>
-      </h1>
-      <p class="text-gray-200 text-lg md:text-xl">
-        YouTuber • Creator • Techie
-      </p>
-
-      <div class="flex justify-center gap-4">
-        <a href="#timeline" class="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-700 shadow-depth transition">
-          Explore Portfolio
-        </a>
-        <a href="https://www.youtube.com/@Gowtham_in_Germany" class="px-6 py-3 rounded-xl border border-gray-300 hover:border-blue-400 transition">
-          Subscribe
-        </a>
+  <nav class="fixed w-full z-50 top-0 start-0 border-b border-white/10 bg-dark/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between p-4">
+      <a href="#" class="flex items-center space-x-2 rtl:space-x-reverse">
+        <span class="self-center text-2xl font-bold whitespace-nowrap text-white">Gowtham <span class="text-brand">in Germany</span></span>
+      </a>
+      <div class="flex space-x-4">
+        <a href="#about" class="hover:text-brand transition">About</a>
+        <a href="#connect" class="px-4 py-2 text-sm font-medium text-white bg-brand rounded-full hover:bg-rose-700 transition">Connect</a>
       </div>
-
-      <!-- SUBSCRIBER CARD -->
-      <section class="relative -mt-32 px-6 text-center">
-        <div class="max-w-xl mx-auto bg-white/100 backdrop-blur-xl rounded-3xl p-6 shadow-[0_25px_50px_rgba(0,0,0,0.2)] text-black">
-          <p class="text-gray-700 mb-1 text-sm uppercase tracking-wide">Youtube Subscribers</p>
-
-          <!-- Full Channel Name -->
-          <h3 class="text-2xl font-bold text-red-600 mb-4">
-            Gowtham in Germany
-          </h3>
-
-          <iframe 
-            src="https://livecounts.io/embed/youtube-live-subscriber-counter/UCG42pPkVYbqAhAvoe1U9JWA" 
-            width="300" 
-            height="80" 
-            frameborder="0" 
-            scrolling="no"
-            class="mx-auto">
-          </iframe>
-        </div>
-      </section>
     </div>
-  </section>
+  </nav>
 
-  <!-- ABOUT CARD -->
-  <section class="relative -mt-24 px-6">
-    <div class="max-w-4xl mx-auto bg-neutral-900/70 backdrop-blur-xl rounded-3xl p-8 shadow-depth">
-      <h2 class="text-3xl font-bold mb-4">About Me</h2>
-
-      <div class="text-gray-300 leading-relaxed">
-        <p class="mb-4">
-          Exploring Germany as a Masters student. Join me as I document:
+  <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center gap-12">
+      
+      <div class="flex-1 text-center lg:text-left z-10">
+        <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight text-white mb-6">
+          Exploring <br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand to-orange-500">Germany</span>
+        </h1>
+        <p class="text-lg text-slate-400 mb-8 max-w-2xl mx-auto lg:mx-0">
+          Masters student, YouTuber, and Tech enthusiast documenting the journey of life abroad. Join 22K+ others in this adventure.
         </p>
-        <ul class="list-disc list-inside space-y-2 ml-2">
-          <li>Cultural learnings & life in Germany</li>
-          <li>Masters student experiences</li>
-          <li>Kitchen escapades & cooking</li>
-          <li>Tech and creator journey</li>
-        </ul>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a href="#connect" class="px-8 py-4 rounded-xl bg-brand font-semibold text-white hover:bg-rose-700 transition shadow-[0_0_20px_rgba(225,29,72,0.4)]">
+            Let's Connect
+          </a>
+          <a href="https://www.youtube.com/@Gowtham_in_Germany" target="_blank" class="px-8 py-4 rounded-xl border border-slate-600 font-semibold hover:border-white transition flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+            Watch on YouTube
+          </a>
+        </div>
+        
+        <div class="mt-10 inline-block p-4 rounded-2xl bg-white shadow-2xl transform hover:scale-105 transition duration-300">
+            <p class="text-xs text-slate-500 uppercase tracking-widest mb-2 font-bold text-center">Live Subscribers</p>
+            <iframe 
+                src="https://livecounts.io/embed/youtube-live-subscriber-counter/UCG42pPkVYbqAhAvoe1U9JWA" 
+                style="width: 300px; height: 100px; border: none; border-radius: 10px;"
+                scrolling="no">
+            </iframe>
+        </div>
+      </div>
+
+      <div class="flex-1 relative">
+        <div class="absolute inset-0 bg-brand blur-[100px] opacity-20 rounded-full"></div>
+        <img 
+          src="./assets/gowtham bw.jpg" 
+          alt="Gowtham Portrait" 
+          class="relative w-full max-w-md mx-auto rounded-3xl shadow-2xl rotate-3 border border-white/10 hover:rotate-0 transition duration-500"
+        >
       </div>
     </div>
   </section>
 
-  <!-- TIMELINE SECTION -->
-  <section id="timeline" class="mt-32 px-6 pb-32">
-    <h2 class="text-4xl font-bold text-center mb-16">Link Tree</h2>
-
-    <div class="relative max-w-3xl mx-auto">
-      <!-- Vertical Line -->
-      <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-red-600 to-transparent"></div>
-
-      <!-- Timeline Item 1 -->
-      <div class="relative mb-20">
-        <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-red-600 flex items-center justify-center shadow-depth">1</div>
-        <a href="https://topmate.io/gowtham_reddy24" class="block ml-auto w-full md:w-[45%] bg-neutral-900/80 backdrop-blur-xl p-6 rounded-2xl shadow-depth transition hover:-translate-y-2">
-          <h3 class="text-xl font-semibold">📌Book 1:1 Call</h3>
-          <p class="text-gray-400 text-sm mt-2">Share information</p>
-        </a>
-      </div>
-
-      <!-- Timeline Item 2 -->
-      <div class="relative mb-20">
-        <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-red-600 flex items-center justify-center shadow-depth">2</div>
-        <a href="https://chat.whatsapp.com/D6oojvdIiRfCUpu5F81MqC" class="block mr-auto w-full md:w-[45%] bg-neutral-900/80 backdrop-blur-xl p-6 rounded-2xl shadow-depth transition hover:-translate-y-2">
-          <h3 class="text-xl font-semibold">📌German Language Group</h3>
-          <p class="text-gray-400 text-sm mt-2">Learn German With Us</p>
-        </a>
-      </div>
-
-      <!-- Timeline Item 3 -->
-      <div class="relative mb-20">
-        <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-red-600 flex items-center justify-center shadow-depth">3</div>
-        <a href="https://t.me/ 7ju-BLQkdC40OWIy" class="block ml-auto w-full md:w-[45%] bg-neutral-900/80 backdrop-blur-xl p-6 rounded-2xl shadow-depth transition hover:-translate-y-2">
-          <h3 class="text-xl font-semibold">📌Telegram</h3>
-          <p class="text-gray-400 text-sm mt-2">Join Our Page For Updates</p>
-        </a>
-      </div>
-
-      <!-- Timeline Item 4 -->
-      <div class="relative mb-20">
-        <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-red-600 flex items-center justify-center shadow-depth">4</div>
-        <a href="https://www.instagram.com/gowtham_in_germany?igsh=M28zajVocjR4OHF0" class="block mr-auto w-full md:w-[45%] bg-neutral-900/80 backdrop-blur-xl p-6 rounded-2xl shadow-depth transition hover:-translate-y-2">
-          <h3 class="text-xl font-semibold">📌Instagram Page</h3>
-          <p class="text-gray-400 text-sm mt-2">Join Our 22K Community</p>
-        </a>
-      </div>
-
-      <!-- Timeline Item 5 -->
-      <div class="relative mb-20">
-        <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-red-600 flex items-center justify-center shadow-depth">5</div>
-        <a href="https://my.goniyo.com/onb/v1/?utm_adgroup=Mobile_Onboarding&utm_campaign_id=dyL6thzd&utm_campaign=Influencer&utm_medium=Influencer&utm_source=Gowtham_in_GermanyYT&ncid=ZDhp9uS6Ittf64fp04IZFzZDxsq7im4fKuG7wxAqnaFOI5NY4AqQkw%3D%3D&utm_adgroup=Mobile_Onboarding&utm_campaign_id=dyL6thzd&utm_campaign=Influencer&utm_medium=Influencer&utm_source=Gowtham_in_GermanyYT&utm_utr=&ncid=ZDhp9uS6Ittf64fp04IZFzZDxsq7im4fKuG7wxAqnaFOI5NY4AqQkw%253D%253D&fbclid=PAT01DUAPAx25leHRuA2FlbQIxMABzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAad0iz4HDM6zOzoj0KF_irGQGjRy8XhsxYw_VKPk-vIvulOfa-o3FRQp0SLC9g_aem_nnffmBJ9fD2Gqy2e70N5og" class="block ml-auto w-full md:w-[45%] bg-neutral-900/80 backdrop-blur-xl p-6 rounded-2xl shadow-depth transition hover:-translate-y-2">
-          <h3 class="text-xl font-semibold">📌Niyo Card</h3>
-          <p class="text-gray-400 text-sm mt-2">Referral Code-GOW250</p>
-        </a>
-      </div>
-
-      
-
-      <!-- Timeline Item 7: LinkedIn -->
-      <div class="relative mb-20">
-        <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-red-600 flex items-center justify-center shadow-depth">6</div>
-        <a href="https://www.linkedin.com/in/gowtham-reddy-sodanapalli-401348194/" class="block mr-auto w-full md:w-[45%] bg-neutral-900/80 backdrop-blur-xl p-6 rounded-2xl shadow-depth transition hover:-translate-y-2">
-          <h3 class="text-xl font-semibold">📌LinkedIn</h3>
-          <p class="text-gray-400 text-sm mt-2">Connect with me professionally</p>
-        </a>
-      </div>
-      
-      <div class="relative mb-20">
-        <div class="absolute left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-red-600 flex items-center justify-center shadow-depth">6</div>
-        <a href="https://chat.whatsapp.com/GQ6Ovdr1w3K25otIgI62w9" class="block mr-auto w-full md:w-[45%] bg-neutral-900/80 backdrop-blur-xl p-6 rounded-2xl shadow-depth transition hover:-translate-y-2">
-          <h3 class="text-xl font-semibold">Join Consultancy Group</h3>
-          <p class="text-gray-400 text-sm mt-2">Connect with us to target MAsters Admission</p>
-        </a>
+  <section id="about" class="py-20 bg-slate-900/50">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="glass-card rounded-3xl p-10 text-center">
+        <h2 class="text-3xl font-bold text-white mb-6">Behind the Lens</h2>
+        <p class="text-slate-300 leading-relaxed text-lg mb-6">
+          "Exploring Germany as a Masters student."
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+            <div class="flex items-start gap-3">
+                <span class="text-brand text-xl">✓</span>
+                <p class="text-slate-400">Cultural learnings & Student life</p>
+            </div>
+            <div class="flex items-start gap-3">
+                <span class="text-brand text-xl">✓</span>
+                <p class="text-slate-400">Masters student experiences</p>
+            </div>
+            <div class="flex items-start gap-3">
+                <span class="text-brand text-xl">✓</span>
+                <p class="text-slate-400">Kitchen escapades & Cooking</p>
+            </div>
+            <div class="flex items-start gap-3">
+                <span class="text-brand text-xl">✓</span>
+                <p class="text-slate-400">Tech and creator journey</p>
+            </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="text-center py-10 text-gray-500">
-    <div class="flex justify-center gap-6 mb-4 text-sm">
-      
-      <a href="https://www.linkedin.com/in/gowtham-reddy-sodanapalli-401348194/"
-         class="hover:text-red-400 transition">
-        LinkedIn
-      </a>
-      <a href="https://www.instagram.com/gowtham_in_germany"
-         class="hover:text-red-400 transition">
-        Instagram
-      </a>
-      <a href="https://www.youtube.com/@Gowtham_in_Germany"
-         class="hover:text-red-400 transition">
-        YouTube
-      </a>
-    </div>
+  <section id="connect" class="py-20 px-6 bg-gradient-to-b from-dark to-black">
+    <div class="max-w-5xl mx-auto">
+        <h2 class="text-4xl font-bold text-center text-white mb-16">Connect & Grow</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <a href="https://topmate.io/gowtham_reddy24" class="glass-card p-6 rounded-2xl flex flex-col gap-4 group transition h-full hover:bg-white/10">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-full bg-brand/20 text-brand flex items-center justify-center text-2xl group-hover:bg-brand group-hover:text-white transition">📞</div>
+                    <h3 class="text-xl font-bold text-white">Book 1:1 Call</h3>
+                </div>
+                <div class="pl-16">
+                    <ul class="space-y-2 text-sm text-slate-300">
+                        <li class="flex items-start gap-2"><span class="text-brand">•</span> Profile Analysis</li>
+                        <li class="flex items-start gap-2"><span class="text-brand">•</span> University Shortlisting</li>
+                        <li class="flex items-start gap-2"><span class="text-brand">•</span> Get your Letter of Motivation within 3 days</li>
+                        <li class="flex items-start gap-2"><span class="text-brand">•</span> Get your Recommendation Letter within 3 days</li>
+                        <li class="flex items-start gap-2"><span class="text-brand">•</span> Get your Statement of Purpose within 3 days</li>
+                        
+                    </ul>
+                </div>
+            </a>
 
-    © 2025 Gowtham_in_Germany
+            <a href="https://chat.whatsapp.com/D6oojvdIiRfCUpu5F81MqC" class="glass-card p-6 rounded-2xl flex items-center gap-4 group transition h-full">
+                <div class="w-12 h-12 rounded-full bg-green-500/20 text-green-500 flex items-center justify-center text-2xl group-hover:bg-green-600 group-hover:text-white transition">💬</div>
+                <div>
+                    <h3 class="text-xl font-bold text-white">German Language Group </h3>
+                    <p class="text-sm text-slate-400">Learn German with us</p>
+                </div>
+            </a>
+
+            <a href="https://t.me/7ju-BLQkdC40OWIy" class="glass-card p-6 rounded-2xl flex items-center gap-4 group transition h-full">
+                <div class="w-12 h-12 rounded-full bg-blue-400/20 text-blue-400 flex items-center justify-center text-2xl group-hover:bg-blue-500 group-hover:text-white transition">✈️</div>
+                <div>
+                    <h3 class="text-xl font-bold text-white">Telegram Channel</h3>
+                    <p class="text-sm text-slate-400">Updates & Community</p>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/gowtham_in_germany" class="glass-card p-6 rounded-2xl flex items-center gap-4 group transition h-full">
+                <div class="w-12 h-12 rounded-full bg-pink-500/20 text-pink-500 flex items-center justify-center text-2xl group-hover:bg-pink-600 group-hover:text-white transition">📸</div>
+                <div>
+                    <h3 class="text-xl font-bold text-white">Instagram</h3>
+                    <p class="text-sm text-slate-400">Join our 23K+ Community</p>
+                </div>
+            </a>
+
+            <a href="https://www.linkedin.com/in/gowtham-reddy-sodanapalli-401348194/" class="glass-card p-6 rounded-2xl flex items-center gap-4 group transition h-full">
+                <div class="w-12 h-12 rounded-full bg-blue-700/20 text-blue-700 flex items-center justify-center text-2xl group-hover:bg-blue-700 group-hover:text-white transition">💼</div>
+                <div>
+                    <h3 class="text-xl font-bold text-white">LinkedIn</h3>
+                    <p class="text-sm text-slate-400">Professional Connection</p>
+                </div>
+            </a>
+
+            <a href="https://chat.whatsapp.com/GQ6Ovdr1w3K25otIgI62w9" class="glass-card p-6 rounded-2xl flex items-center gap-4 group transition h-full">
+                <div class="w-12 h-12 rounded-full bg-teal-500/20 text-teal-500 flex items-center justify-center text-2xl group-hover:bg-teal-600 group-hover:text-white transition">🎓</div>
+                <div>
+                    <h3 class="text-xl font-bold text-white">Consultancy Group for student pricing</h3>
+                    <p class="text-sm text-slate-400">Masters Admission Targets</p>
+                </div>
+            </a>
+        </div>
+        
+        <div class="mt-10 p-1 rounded-2xl bg-gradient-to-r from-brand to-orange-500">
+            <a href="https://my.goniyo.com/onb/v1/" class="block bg-dark rounded-xl p-6 text-center hover:bg-slate-900 transition">
+                <h3 class="text-lg font-bold text-white">💳 Get your Niyo Card. why??--Its Better than FOREX CARDS</h3>
+                <p class="text-slate-400 text-sm mb-2">Use Referral Code: <span class="text-brand font-bold">GOW250</span></p>
+                <span class="text-xs text-slate-500 underline">Click to apply</span>
+            </a>
+        </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/10 bg-black py-12 text-center">
+    <div class="flex justify-center space-x-6 mb-6">
+        <a href="#" class="text-slate-500 hover:text-white transition">Home</a>
+        <a href="#about" class="text-slate-500 hover:text-white transition">About</a>
+        <a href="#connect" class="text-slate-500 hover:text-white transition">Contact</a>
+    </div>
+    <p class="text-slate-600 text-sm">
+      &copy; 2025 Gowtham in Germany. All rights reserved.
+    </p>
   </footer>
 
 </body>
