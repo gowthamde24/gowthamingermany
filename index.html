@@ -47,14 +47,14 @@
         <span class="self-center text-2xl font-bold whitespace-nowrap text-white">Gowtham <span class="text-brand">in Germany</span></span>
       </a>
       <div class="flex space-x-4">
-        <a href="#about" class="hover:text-brand transition">About</a>
+        <a href="#about" class="hover:text-brand transition py-2">About</a>
         <a href="#connect" class="px-4 py-2 text-sm font-medium text-white bg-brand rounded-full hover:bg-rose-700 transition">Connect</a>
       </div>
     </div>
   </nav>
 
   <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col-reverse lg:flex-row items-center gap-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12">
       
       <div class="flex-1 text-center lg:text-left z-10">
         <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight text-white mb-6">
@@ -64,7 +64,8 @@
         <p class="text-lg text-slate-400 mb-8 max-w-2xl mx-auto lg:mx-0">
           Masters student, YouTuber, and Tech enthusiast documenting the journey of life abroad. Join 22K+ others in this adventure.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-10">
           <a href="#connect" class="px-8 py-4 rounded-xl bg-brand font-semibold text-white hover:bg-rose-700 transition shadow-[0_0_20px_rgba(225,29,72,0.4)]">
             Let's Connect
           </a>
@@ -73,8 +74,8 @@
             Watch on YouTube
           </a>
         </div>
-        
-        <div class="mt-10 inline-block p-4 rounded-2xl bg-white shadow-2xl transform hover:scale-105 transition duration-300">
+
+        <div class="inline-block p-4 rounded-2xl bg-white shadow-2xl transform hover:scale-105 transition duration-300">
             <p class="text-xs text-slate-500 uppercase tracking-widest mb-2 font-bold text-center">Live Subscribers</p>
             <iframe 
                 src="https://livecounts.io/embed/youtube-live-subscriber-counter/UCG42pPkVYbqAhAvoe1U9JWA" 
@@ -83,44 +84,36 @@
             </iframe>
         </div>
       </div>
-
-      <div class="flex-1 relative">
-        <div class="absolute inset-0 bg-brand blur-[100px] opacity-20 rounded-full"></div>
-        <img 
-          src="./assets/gowtham bw.jpg" 
-          alt="Gowtham Portrait" 
-          class="relative w-full max-w-md mx-auto rounded-3xl shadow-2xl rotate-3 border border-white/10 hover:rotate-0 transition duration-500"
-        >
+      
+      <div id="about" class="flex-1 w-full z-10">
+         <div class="glass-card rounded-3xl p-8 lg:p-10">
+            <h2 class="text-2xl lg:text-3xl font-bold text-white mb-4">Behind the Lens</h2>
+            <p class="text-slate-300 leading-relaxed text-lg mb-6 italic border-l-4 border-brand pl-4">
+              "Exploring Germany as a Masters student."
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
+                <div class="flex items-start gap-3">
+                    <span class="text-brand text-xl">✓</span>
+                    <p class="text-slate-400">Cultural learnings & Student life</p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-brand text-xl">✓</span>
+                    <p class="text-slate-400">Masters student experiences</p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-brand text-xl">✓</span>
+                    <p class="text-slate-400">Kitchen escapades & Cooking</p>
+                </div>
+                <div class="flex items-start gap-3">
+                    <span class="text-brand text-xl">✓</span>
+                    <p class="text-slate-400">Tech and creator journey</p>
+                </div>
+            </div>
+         </div>
       </div>
-    </div>
-  </section>
 
-  <section id="about" class="py-20 bg-slate-900/50">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="glass-card rounded-3xl p-10 text-center">
-        <h2 class="text-3xl font-bold text-white mb-6">Behind the Lens</h2>
-        <p class="text-slate-300 leading-relaxed text-lg mb-6">
-          "Exploring Germany as a Masters student."
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-            <div class="flex items-start gap-3">
-                <span class="text-brand text-xl">✓</span>
-                <p class="text-slate-400">Cultural learnings & Student life</p>
-            </div>
-            <div class="flex items-start gap-3">
-                <span class="text-brand text-xl">✓</span>
-                <p class="text-slate-400">Masters student experiences</p>
-            </div>
-            <div class="flex items-start gap-3">
-                <span class="text-brand text-xl">✓</span>
-                <p class="text-slate-400">Kitchen escapades & Cooking</p>
-            </div>
-            <div class="flex items-start gap-3">
-                <span class="text-brand text-xl">✓</span>
-                <p class="text-slate-400">Tech and creator journey</p>
-            </div>
-        </div>
-      </div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand blur-[120px] opacity-10 w-[500px] h-[500px] rounded-full -z-10"></div>
+
     </div>
   </section>
 
@@ -142,7 +135,6 @@
                         <li class="flex items-start gap-2"><span class="text-brand">•</span> Get your Letter of Motivation within 3 days</li>
                         <li class="flex items-start gap-2"><span class="text-brand">•</span> Get your Recommendation Letter within 3 days</li>
                         <li class="flex items-start gap-2"><span class="text-brand">•</span> Get your Statement of Purpose within 3 days</li>
-                        
                     </ul>
                 </div>
             </a>
