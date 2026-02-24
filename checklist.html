@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Germany Packing Checklist | Gowtham IN Germany</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brand: '#e11d48', dark: '#0f172a' }, fontFamily: { sans: ['Inter', 'sans-serif'] } } },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .checkbox-wrapper input:checked + div { background-color: #e11d48; border-color: #e11d48; }
+    .checkbox-wrapper input:checked + div svg { display: block; }
+  </style>
+</head>
+
+<body class="bg-dark text-slate-200 min-h-screen flex flex-col">
+
+  <nav class="w-full border-b border-white/10 bg-dark/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-2 text-slate-400 hover:text-white transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
+        Back to Home
+      </a>
+      <span class="font-bold text-white">Packing <span class="text-brand">Checklist</span></span>
+    </div>
+  </nav>
+
+  <section class="flex-grow py-12 px-6 relative">
+    <div class="absolute top-0 right-0 bg-brand blur-[150px] opacity-10 w-[600px] h-[600px] rounded-full -z-10"></div>
+
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-10">
+        <h1 class="text-4xl font-extrabold text-white mb-2">Master Packing List 🇮🇳 ✈️ 🇩🇪</h1>
+        <p class="text-slate-400">Don't fly without these. Your progress is saved automatically!</p>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-2 mb-8" id="tabs">
+        <button onclick="switchTab('docs')" class="tab-btn active px-6 py-2 rounded-full border border-brand bg-brand text-white font-medium transition" data-target="docs">Documents</button>
+        <button onclick="switchTab('kitchen')" class="tab-btn px-6 py-2 rounded-full border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-white transition" data-target="kitchen">Kitchen</button>
+        <button onclick="switchTab('clothing')" class="tab-btn px-6 py-2 rounded-full border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-white transition" data-target="clothing">Clothing</button>
+        <button onclick="switchTab('electronics')" class="tab-btn px-6 py-2 rounded-full border border-slate-700 hover:border-slate-500 text-slate-400 hover:text-white transition" data-target="electronics">Electronics</button>
+      </div>
+
+      <div class="glass-card rounded-3xl p-6 md:p-8 min-h-[400px]">
+        
+        <div id="docs" class="tab-content space-y-4">
+          <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2">📂 Essential Documents <span class="text-xs font-normal text-brand bg-brand/10 px-2 py-1 rounded">Carry in Hand Baggage</span></h2>
+          </div>
+
+        <div id="kitchen" class="tab-content hidden space-y-4">
+          <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2">🥘 Kitchen & Food <span class="text-xs font-normal text-slate-400 bg-white/5 px-2 py-1 rounded">Check Weight Limits</span></h2>
+        </div>
+
+        <div id="clothing" class="tab-content hidden space-y-4">
+          <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2">🧥 Clothing <span class="text-xs font-normal text-slate-400 bg-white/5 px-2 py-1 rounded">Winter is Coming</span></h2>
+        </div>
+
+        <div id="electronics" class="tab-content hidden space-y-4">
+          <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2">🔌 Electronics <span class="text-xs font-normal text-slate-400 bg-white/5 px-2 py-1 rounded">Expensive in EU</span></h2>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-12">
+        <button onclick="resetList()" class="text-xs text-slate-500 hover:text-red-400 underline decoration-dotted">Reset all progress</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Data for the checklist
+    const checklistData = {
+      docs: [
+        "Passport (Original + 3 Xerox copies)",
+        "Visa (Check validity dates)",
+        "University Admit Letter",
+        "Travel Insurance",
+        "Blocked Account Confirmation (Expatrio/Coracle/Fintiba)",
+        "Health Insurance Certificate",
+        "Accommodation Contract (Wohnungsgeberbestätigung)",
+        "Biometric Photos (10-15 copies, German size)",
+        "Academic Transcripts & Degree Certificate",
+        "Cash (EUR 500-1000 in small notes)"
+      ],
+      kitchen: [
+        "Pressure Cooker (2L/3L) - Must have!",
+        "Spice Box (Masala Dabba) filled",
+        "Ready-to-Eat Meals (for first 3 days)",
+        "Maggi / Noodles (Emergency food)",
+        "Plate, Spoon, Fork, Mug (1 set)"
+      ],
+      clothing: [
+        "Winter Jacket (Buy in DE recommended, carry light one)",
+        "Thermal Wear (Innerwear - Upper & Lower)",
+        "Jeans (3-4 pairs)",
+        "Hoodies / Sweatshirts (2-3)",
+        "Formal Shirt & Trousers (For interviews)",
+        "Traditional Wear (For festivals/gatherings)"
+      ],
+      electronics: [
+        "Universal Travel Adapter (Type C for Germany)",
+        "Extension Board (Indian sockets)",
+        "Power Bank",
+        "Laptop + Charger",
+        "Spare USB Cables"
+      ]
+    };
+
+    // Initialize
+    function init() {
+      // Render items
+      for (const [category, items] of Object.entries(checklistData)) {
+        const container = document.getElementById(category);
+        items.forEach((item, index) => {
+          const id = `${category}-${index}`;
+          const isChecked = localStorage.getItem(id) === 'true';
+          
+          const html = `
+            <label class="checkbox-wrapper flex items-start gap-4 p-4 rounded-xl bg-black/20 border border-white/5 hover:bg-white/5 transition cursor-pointer group">
+              <div class="relative flex items-center">
+                <input type="checkbox" id="${id}" class="peer sr-only" onchange="toggleCheck('${id}')" ${isChecked ? 'checked' : ''}>
+                <div class="w-6 h-6 border-2 border-slate-500 rounded-md peer-checked:bg-brand peer-checked:border-brand transition flex items-center justify-center">
+                  <svg class="w-4 h-4 text-white hidden pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+              </div>
+              <span class="text-slate-300 group-hover:text-white transition ${isChecked ? 'line-through text-slate-500' : ''}" id="text-${id}">${item}</span>
+            </label>
+          `;
+          container.insertAdjacentHTML('beforeend', html);
+        });
+      }
+    }
+
+    // Toggle Logic
+    function toggleCheck(id) {
+      const checkbox = document.getElementById(id);
+      const text = document.getElementById(`text-${id}`);
+      
+      localStorage.setItem(id, checkbox.checked);
+      
+      if(checkbox.checked) {
+        text.classList.add('line-through', 'text-slate-500');
+      } else {
+        text.classList.remove('line-through', 'text-slate-500');
+      }
+    }
+
+    // Tab Switching
+    function switchTab(targetId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById(targetId).classList.remove('hidden');
+      
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-brand', 'border-brand', 'text-white');
+        btn.classList.add('border-slate-700', 'text-slate-400');
+      });
+      
+      const activeBtn = document.querySelector(`button[data-target="${targetId}"]`);
+      activeBtn.classList.remove('border-slate-700', 'text-slate-400');
+      activeBtn.classList.add('bg-brand', 'border-brand', 'text-white');
+    }
+
+    function resetList() {
+      if(confirm("Are you sure you want to uncheck all items?")) {
+        localStorage.clear();
+        location.reload();
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>

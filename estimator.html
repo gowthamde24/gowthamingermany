@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cost of Living Estimator | Gowtham IN Germany</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brand: '#e11d48', dark: '#0f172a' }, fontFamily: { sans: ['Inter', 'sans-serif'] } } },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+  </style>
+</head>
+
+<body class="bg-dark text-slate-200 min-h-screen flex flex-col">
+
+  <nav class="w-full border-b border-white/10 bg-dark/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-2 text-slate-400 hover:text-white transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
+        Back to Home
+      </a>
+      <span class="font-bold text-white">Cost <span class="text-brand">Estimator</span></span>
+    </div>
+  </nav>
+
+  <section class="flex-grow py-12 px-6 relative flex items-center justify-center">
+    <div class="absolute top-1/2 left-0 -translate-y-1/2 bg-blue-600 blur-[150px] opacity-10 w-[400px] h-[400px] rounded-full -z-10"></div>
+    <div class="absolute bottom-0 right-0 bg-brand blur-[150px] opacity-10 w-[400px] h-[400px] rounded-full -z-10"></div>
+
+    <div class="max-w-4xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      
+      <div>
+        <h1 class="text-4xl font-extrabold text-white mb-4">Monthly Expenses 💶</h1>
+        <p class="text-slate-400 mb-8">Select a city to see how much money you realistically need per month as a student.</p>
+        
+        <div class="glass-card p-6 rounded-3xl space-y-6">
+            <div>
+                <label class="block text-sm font-medium text-slate-300 mb-2">Select City / Region</label>
+                <select id="citySelect" onchange="calculateCost()" class="w-full bg-black/40 border border-slate-600 rounded-xl p-4 text-white focus:border-brand focus:ring-1 focus:ring-brand outline-none transition cursor-pointer">
+                    <option value="munich">Munich (Expensive)</option>
+                    <option value="frankfurt">Frankfurt / Stuttgart</option>
+                    <option value="hamburg">Hamburg / Berlin (Tier 1)</option>
+                    <option value="nrw">NRW (Dortmund/Essen)</option>
+                    <option value="east">East (Chemnitz/Magdeburg)</option>
+                    <option value="average" selected>German Average</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-slate-300 mb-2">Lifestyle</label>
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="setLifestyle('frugal')" id="btn-frugal" class="life-btn py-2 rounded-lg border border-slate-600 text-sm text-slate-400 hover:text-white transition">Frugal</button>
+                    <button onclick="setLifestyle('moderate')" id="btn-moderate" class="life-btn bg-brand border border-brand text-white py-2 rounded-lg text-sm transition shadow-lg shadow-brand/20">Moderate</button>
+                    <button onclick="setLifestyle('spender')" id="btn-spender" class="life-btn py-2 rounded-lg border border-slate-600 text-sm text-slate-400 hover:text-white transition">Spender</button>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-white/10">
+                <div class="flex justify-between items-center mb-1">
+                    <span class="text-sm text-slate-400">Current Blocked Account Payout</span>
+                    <span class="text-sm font-bold text-white">€934</span>
+                </div>
+                <div class="w-full bg-slate-800 rounded-full h-2">
+                    <div class="bg-slate-500 h-2 rounded-full" style="width: 100%"></div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="glass-card p-8 rounded-3xl relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-brand to-purple-600"></div>
+        
+        <div class="text-center mb-8">
+            <p class="text-slate-400 uppercase tracking-widest text-xs font-bold mb-2">Estimated Monthly Total</p>
+            <div class="text-6xl font-black text-white" id="totalCost">€850</div>
+            <div id="statusBadge" class="inline-block mt-4 px-3 py-1 rounded-full text-xs font-bold bg-green-500/20 text-green-400 border border-green-500/30">
+                Within Blocked Account Limit ✅
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <div class="flex justify-between items-center text-sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center">🏠</div>
+                    <span class="text-slate-300">Rent (WG/Dorm)</span>
+                </div>
+                <span class="font-bold text-white" id="rentCost">€400</span>
+            </div>
+            <div class="flex justify-between items-center text-sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-red-500/20 text-red-400 flex items-center justify-center">❤️</div>
+                    <span class="text-slate-300">Health Insurance</span>
+                </div>
+                <span class="font-bold text-white">€125</span>
+            </div>
+            <div class="flex justify-between items-center text-sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-yellow-500/20 text-yellow-400 flex items-center justify-center">🍔</div>
+                    <span class="text-slate-300">Groceries & Food</span>
+                </div>
+                <span class="font-bold text-white" id="foodCost">€200</span>
+            </div>
+            <div class="flex justify-between items-center text-sm">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center">🎫</div>
+                    <span class="text-slate-300">Transport/Internet/Misc</span>
+                </div>
+                <span class="font-bold text-white" id="miscCost">€125</span>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    let currentLifestyle = 'moderate';
+    
+    // Base Rent data by city
+    const cityData = {
+        munich: 750,
+        frankfurt: 600,
+        hamburg: 550,
+        nrw: 400,
+        east: 300,
+        average: 450
+    };
+
+    function setLifestyle(type) {
+        currentLifestyle = type;
+        document.querySelectorAll('.life-btn').forEach(btn => {
+            btn.className = "life-btn py-2 rounded-lg border border-slate-600 text-sm text-slate-400 hover:text-white transition";
+        });
+        const activeBtn = document.getElementById(`btn-${type}`);
+        activeBtn.className = "life-btn bg-brand border border-brand text-white py-2 rounded-lg text-sm transition shadow-lg shadow-brand/20";
+        calculateCost();
+    }
+
+    function calculateCost() {
+        const cityKey = document.getElementById('citySelect').value;
+        let rent = cityData[cityKey];
+        
+        let food = 200;
+        let misc = 125; // Internet (30) + Sem contribution avg (50) + Phone (15) + Hygiene (30)
+        
+        // Adjust for lifestyle
+        if (currentLifestyle === 'frugal') {
+            rent -= 50; // Got a lucky cheap deal
+            food = 150; // Cook at home only
+            misc = 80;  // Minimal spending
+        } else if (currentLifestyle === 'spender') {
+            rent += 150; // Private Studio maybe
+            food = 350; // Eating out often
+            misc = 200; // Shopping/Partying
+        }
+
+        const health = 125; // Standard public insurance approx
+        const total = rent + health + food + misc;
+
+        // Update DOM
+        animateValue("rentCost", rent);
+        animateValue("foodCost", food);
+        animateValue("miscCost", misc);
+        animateValue("totalCost", total);
+
+        // Status Logic
+        const badge = document.getElementById('statusBadge');
+        if (total > 934) {
+            badge.className = "inline-block mt-4 px-3 py-1 rounded-full text-xs font-bold bg-red-500/20 text-red-400 border border-red-500/30";
+            badge.innerText = `Exceeds Blocked Account by €${total - 934} ⚠️`;
+        } else {
+            badge.className = "inline-block mt-4 px-3 py-1 rounded-full text-xs font-bold bg-green-500/20 text-green-400 border border-green-500/30";
+            badge.innerText = "Within Blocked Account Limit ✅";
+        }
+    }
+
+    function animateValue(id, value) {
+        document.getElementById(id).innerText = "€" + value;
+    }
+
+    // Init
+    calculateCost();
+  </script>
+</body>
+</html>

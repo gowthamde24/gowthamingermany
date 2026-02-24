@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WG Message Generator | Gowtham IN Germany</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brand: '#e11d48', dark: '#0f172a' }, fontFamily: { sans: ['Inter', 'sans-serif'] } } },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+  </style>
+</head>
+
+<body class="bg-dark text-slate-200 min-h-screen flex flex-col">
+
+  <nav class="w-full border-b border-white/10 bg-dark/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-2 text-slate-400 hover:text-white transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
+        Back to Home
+      </a>
+      <span class="font-bold text-white">WG <span class="text-brand">Message Gen</span></span>
+    </div>
+  </nav>
+
+  <section class="flex-grow flex items-center justify-center py-12 px-6 relative overflow-hidden">
+    <div class="absolute top-0 left-0 bg-brand blur-[150px] opacity-10 w-[400px] h-[400px] rounded-full -z-10"></div>
+
+    <div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8">
+      
+      <div>
+        <div class="mb-6">
+            <h1 class="text-3xl font-bold text-white mb-2">WG-Gesucht Message 🇩🇪</h1>
+            <p class="text-slate-400 text-sm">Landlords prefer German. Fill this form to generate a perfect application message.</p>
+        </div>
+
+        <form id="wgForm" class="space-y-4 glass-card p-6 rounded-3xl">
+          
+          <div class="grid grid-cols-2 gap-4">
+              <div>
+                  <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Your Name</label>
+                  <input type="text" id="myName" placeholder="e.g. Rahul Kumar" class="w-full bg-black/40 border border-slate-600 rounded-lg p-2.5 text-white focus:border-brand outline-none transition text-sm">
+              </div>
+              <div>
+                  <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Age</label>
+                  <input type="number" id="myAge" placeholder="24" class="w-full bg-black/40 border border-slate-600 rounded-lg p-2.5 text-white focus:border-brand outline-none transition text-sm">
+              </div>
+          </div>
+
+          <div>
+              <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Course of Study</label>
+              <input type="text" id="myCourse" placeholder="e.g. Data Science" class="w-full bg-black/40 border border-slate-600 rounded-lg p-2.5 text-white focus:border-brand outline-none transition text-sm">
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+             <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Move-in Date</label>
+                <input type="date" id="moveDate" class="w-full bg-black/40 border border-slate-600 rounded-lg p-2.5 text-slate-300 focus:border-brand outline-none transition text-sm">
+             </div>
+             <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase mb-1">City</label>
+                <input type="text" id="city" placeholder="e.g. Berlin" class="w-full bg-black/40 border border-slate-600 rounded-lg p-2.5 text-white focus:border-brand outline-none transition text-sm">
+             </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-500 uppercase mb-2">About You (Important)</label>
+            <div class="grid grid-cols-2 gap-2 text-sm">
+                <label class="flex items-center space-x-2 cursor-pointer">
+                    <input type="checkbox" id="check-smoke" class="rounded text-brand focus:ring-brand bg-slate-800 border-slate-600">
+                    <span class="text-slate-300">I am a Smoker 🚬</span>
+                </label>
+                <label class="flex items-center space-x-2 cursor-pointer">
+                    <input type="checkbox" id="check-pets" class="rounded text-brand focus:ring-brand bg-slate-800 border-slate-600">
+                    <span class="text-slate-300">I have Pets 🐕</span>
+                </label>
+                <label class="flex items-center space-x-2 cursor-pointer">
+                    <input type="checkbox" id="check-clean" checked class="rounded text-brand focus:ring-brand bg-slate-800 border-slate-600">
+                    <span class="text-slate-300">I am Clean/Tidy ✨</span>
+                </label>
+                <label class="flex items-center space-x-2 cursor-pointer">
+                    <input type="checkbox" id="check-quiet" checked class="rounded text-brand focus:ring-brand bg-slate-800 border-slate-600">
+                    <span class="text-slate-300">I am Quiet 🤫</span>
+                </label>
+            </div>
+          </div>
+            
+          <div>
+            <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Hobbies</label>
+            <select id="hobbySelect" class="w-full bg-black/40 border border-slate-600 rounded-lg p-2.5 text-white focus:border-brand outline-none transition text-sm">
+                <option value="cooking">Cooking & Food (Kochen)</option>
+                <option value="reading">Reading & Movies (Lesen & Filme)</option>
+                <option value="sports">Sports & Gym (Sport & Fitness)</option>
+                <option value="travel">Photography & Travel (Reisen)</option>
+                <option value="tech">Coding & Tech (Technologie)</option>
+            </select>
+          </div>
+
+          <button type="button" onclick="generateMessage()" class="w-full py-3 mt-2 rounded-xl bg-white text-dark font-bold hover:bg-slate-200 transition shadow-lg">
+            Generate German Message ⚡
+          </button>
+        </form>
+      </div>
+
+      <div class="flex flex-col h-full">
+         <div class="mb-6 lg:mb-0 lg:flex-grow">
+            <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+                Your Message
+                <span class="text-xs font-normal bg-brand/20 text-brand px-2 py-1 rounded-full border border-brand/20">German</span>
+            </h2>
+            
+            <div class="relative group h-full">
+                <textarea id="outputArea" readonly class="w-full h-[400px] lg:h-full bg-slate-900/50 border border-slate-700 rounded-3xl p-6 text-slate-300 leading-relaxed resize-none focus:border-brand focus:ring-1 focus:ring-brand outline-none font-mono text-sm" 
+                placeholder="Your generated message will appear here..."></textarea>
+                
+                <button onclick="copyText()" class="absolute top-4 right-4 bg-slate-700 hover:bg-white hover:text-dark text-white text-xs px-3 py-1.5 rounded-lg transition flex items-center gap-1 shadow-lg">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                    Copy
+                </button>
+            </div>
+         </div>
+         
+         <p class="text-xs text-slate-500 mt-4 text-center">
+            *Tip: Always attach your Blocked Account proof to show financial stability.
+         </p>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    function generateMessage() {
+      const name = document.getElementById('myName').value || "[Name]";
+      const age = document.getElementById('myAge').value || "[Age]";
+      const course = document.getElementById('myCourse').value || "[Course]";
+      const city = document.getElementById('city').value || "[City]";
+      const dateRaw = document.getElementById('moveDate').value;
+      const hobby = document.getElementById('hobbySelect').value;
+
+      const isSmoker = document.getElementById('check-smoke').checked;
+      const hasPets = document.getElementById('check-pets').checked;
+      const isClean = document.getElementById('check-clean').checked;
+      const isQuiet = document.getElementById('check-quiet').checked;
+
+      // Date Formatting
+      let dateStr = "nächstmöglich"; // Default: as soon as possible
+      if(dateRaw) {
+        const d = new Date(dateRaw);
+        dateStr = d.toLocaleDateString('de-DE', { month: 'long', year: 'numeric' }); // e.g., Oktober 2025
+      }
+
+      // 1. Intro
+      let text = `Hallo,\n\nich habe Ihre Anzeige auf WG-Gesucht gesehen und bin sehr interessiert an dem Zimmer.\n\n`;
+      
+      text += `Kurz zu mir: Mein Name ist ${name}, ich bin ${age} Jahre alt und komme aus Indien. `;
+      text += `Ich werde ab ${dateStr} mein Masterstudium im Bereich "${course}" in ${city} beginnen.\n\n`;
+
+      // 2. Personality (The "Sales" Pitch)
+      text += `Ich würde mich als eine `;
+      let traits = [];
+      if(isQuiet) traits.push("ruhige (quiet)");
+      if(isClean) traits.push("ordentliche (tidy)");
+      traits.push("und zuverlässige Person");
+      
+      // Clean up traits string for German grammar
+      let traitStr = traits.join(", ").replace(", und", " und");
+      traitStr = traitStr.replace(/ \(.*?\)/g, ""); // Remove English helper text
+      text += `${traitStr} beschreiben. `;
+
+      // Smoking / Pets (Crucial for landlords)
+      if(!isSmoker) {
+          text += "Ich bin Nichtraucher ";
+      } else {
+          text += "Ich bin Raucher (rauche aber nur draußen) ";
+      }
+
+      if(!hasPets) {
+          text += "und bringe keine Haustiere mit.\n\n";
+      } else {
+          text += ".\n\n";
+      }
+
+      // 3. Hobbies & Social
+      text += `In meiner Freizeit `;
+      switch(hobby) {
+          case 'cooking': text += "koche ich gerne (besonders indisch!) und freue mich über gemeinsame WG-Abende."; break;
+          case 'reading': text += "lese ich gerne Bücher oder schaue Filme. Ich mag es eher ruhig."; break;
+          case 'sports': text += "mache ich viel Sport und bin oft im Fitnessstudio oder Laufen."; break;
+          case 'travel': text += "reise ich gerne und fotografiere viel."; break;
+          case 'tech': text += "interessiere ich mich für Technologie und Programmieren."; break;
+          default: text += "koche ich gerne und treffe mich mit Freunden.";
+      }
+      text += "\n\n";
+
+      // 4. Finances (Trust factor)
+      text += `Die Miete ist durch mein Sperrkonto (Blocked Account) gesichert. `;
+      text += `Falls Sie weitere Unterlagen benötigen, schicke ich diese gerne zu.\n\n`;
+
+      // 5. Closing
+      text += `Ich würde mich sehr über eine Einladung zur Besichtigung (gerne auch online) freuen.\n\n`;
+      text += `Viele Grüße,\n${name}`;
+
+      document.getElementById('outputArea').value = text;
+    }
+
+    function copyText() {
+        const copyText = document.getElementById("outputArea");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); 
+        navigator.clipboard.writeText(copyText.value);
+        
+        // Visual Feedback
+        const btn = document.querySelector('button[onclick="copyText()"]');
+        const original = btn.innerHTML;
+        btn.innerHTML = "Copied! ✓";
+        btn.classList.add("bg-green-600", "text-white");
+        setTimeout(() => {
+            btn.innerHTML = original;
+            btn.classList.remove("bg-green-600", "text-white");
+        }, 2000);
+    }
+  </script>
+</body>
+</html>

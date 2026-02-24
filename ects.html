@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ECTS Calculator | Gowtham IN Germany</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brand: '#e11d48', dark: '#0f172a' }, fontFamily: { sans: ['Inter', 'sans-serif'] } } },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+  </style>
+</head>
+
+<body class="bg-dark text-slate-200 min-h-screen flex flex-col">
+
+  <nav class="w-full border-b border-white/10 bg-dark/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-2 text-slate-400 hover:text-white transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
+        Back to Home
+      </a>
+      <span class="font-bold text-white">ECTS <span class="text-brand">Calculator</span></span>
+    </div>
+  </nav>
+
+  <section class="flex-grow flex items-center justify-center py-12 px-6 relative overflow-hidden">
+    <div class="absolute top-0 right-0 bg-blue-600 blur-[150px] opacity-10 w-[400px] h-[400px] rounded-full -z-10"></div>
+    <div class="absolute bottom-0 left-0 bg-brand blur-[150px] opacity-10 w-[400px] h-[400px] rounded-full -z-10"></div>
+
+    <div class="max-w-xl w-full">
+      <div class="text-center mb-10">
+        <h1 class="text-4xl font-extrabold text-white mb-2">Convert to ECTS 🎓</h1>
+        <p class="text-slate-400">Estimate your European Credit Transfer System (ECTS) equivalent based on workload hours.</p>
+      </div>
+
+      <div class="glass-card p-8 rounded-3xl shadow-2xl">
+        
+        <div class="flex bg-black/30 rounded-lg p-1 mb-8">
+            <button onclick="setMethod('credits')" id="tab-credits" class="flex-1 py-2 rounded-md text-sm font-bold bg-slate-700 text-white shadow transition">By Indian Credits</button>
+            <button onclick="setMethod('hours')" id="tab-hours" class="flex-1 py-2 rounded-md text-sm font-bold text-slate-400 hover:text-white transition">By Total Hours</button>
+        </div>
+
+        <form id="ectsForm" class="space-y-6">
+          
+          <div id="group-credits" class="space-y-4">
+              <div>
+                  <label class="block text-sm font-medium text-slate-300 mb-2">Total Indian Credits Obtained</label>
+                  <input type="number" id="indianCredits" placeholder="e.g. 160" class="w-full bg-black/40 border border-slate-600 rounded-xl p-3 text-white focus:border-brand focus:ring-1 focus:ring-brand outline-none transition">
+              </div>
+              <div>
+                  <label class="block text-sm font-medium text-slate-300 mb-1">Workload Hours per Credit <span class="text-xs text-slate-500 font-normal">(Check your syllabus)</span></label>
+                  <input type="number" id="hoursPerCredit" placeholder="e.g. 40" class="w-full bg-black/40 border border-slate-600 rounded-xl p-3 text-white focus:border-brand focus:ring-1 focus:ring-brand outline-none transition">
+                  <p class="text-xs text-slate-500 mt-2">
+                    💡 Tip: If 1 Credit = 1 Lecture Hour, try entering <strong>25-30</strong> (accounting for self-study). If unsure, calculate Total Hours directly.
+                  </p>
+              </div>
+          </div>
+
+          <div id="group-hours" class="hidden space-y-4">
+              <div>
+                  <label class="block text-sm font-medium text-slate-300 mb-2">Total Study Hours (Degree)</label>
+                  <input type="number" id="totalHours" placeholder="e.g. 5400" class="w-full bg-black/40 border border-slate-600 rounded-xl p-3 text-white focus:border-brand focus:ring-1 focus:ring-brand outline-none transition">
+                  <p class="text-xs text-slate-500 mt-2">
+                    Include Lectures, Tutorials, Practical, and Self-Study time.
+                  </p>
+              </div>
+          </div>
+
+          <button type="button" onclick="calculateECTS()" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand to-rose-600 font-bold text-white text-lg hover:shadow-lg hover:shadow-brand/25 transition transform active:scale-95">
+            Calculate ECTS
+          </button>
+        </form>
+
+        <div id="resultBox" class="hidden mt-8 pt-8 border-t border-white/10 text-center animate-fade-in">
+          <p class="text-slate-400 text-xs uppercase tracking-widest mb-2">Estimated ECTS Value</p>
+          <div class="text-6xl font-black text-white mb-3 tracking-tight" id="ectsValue">0</div>
+          
+          <div class="inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30" id="ectsText">
+            Bachelor Equivalent (3 Years)
+          </div>
+
+          <div class="mt-6 p-4 rounded-xl bg-white/5 text-left text-xs text-slate-400 space-y-2 border border-white/5">
+             <p><span class="text-brand font-bold">The Math:</span> 1 ECTS = 30 Hours of Workload.</p>
+             <p>German Universities typically require:</p>
+             <ul class="list-disc list-inside text-slate-300">
+                <li>180 ECTS for a 3-year Bachelor</li>
+                <li>210-240 ECTS for a 4-year Bachelor</li>
+             </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    let currentMethod = 'credits';
+
+    function setMethod(method) {
+        currentMethod = method;
+        const btnCredits = document.getElementById('tab-credits');
+        const btnHours = document.getElementById('tab-hours');
+        const groupCredits = document.getElementById('group-credits');
+        const groupHours = document.getElementById('group-hours');
+
+        if(method === 'credits') {
+            btnCredits.className = "flex-1 py-2 rounded-md text-sm font-bold bg-slate-700 text-white shadow transition";
+            btnHours.className = "flex-1 py-2 rounded-md text-sm font-bold text-slate-400 hover:text-white transition";
+            groupCredits.classList.remove('hidden');
+            groupHours.classList.add('hidden');
+        } else {
+            btnHours.className = "flex-1 py-2 rounded-md text-sm font-bold bg-slate-700 text-white shadow transition";
+            btnCredits.className = "flex-1 py-2 rounded-md text-sm font-bold text-slate-400 hover:text-white transition";
+            groupHours.classList.remove('hidden');
+            groupCredits.classList.add('hidden');
+        }
+        document.getElementById('resultBox').classList.add('hidden');
+    }
+
+    function calculateECTS() {
+        let totalHours = 0;
+
+        if (currentMethod === 'credits') {
+            const credits = parseFloat(document.getElementById('indianCredits').value);
+            const hoursPer = parseFloat(document.getElementById('hoursPerCredit').value);
+            if (!credits || !hoursPer) { alert("Please fill all fields"); return; }
+            totalHours = credits * hoursPer;
+        } else {
+            totalHours = parseFloat(document.getElementById('totalHours').value);
+            if (!totalHours) { alert("Please enter total hours"); return; }
+        }
+
+        // Calculation: Standard 1 ECTS = 30 Hours
+        let ects = totalHours / 30;
+        
+        // Display
+        const ectsDisplay = document.getElementById('ectsValue');
+        const textDisplay = document.getElementById('ectsText');
+        
+        ectsDisplay.innerText = Math.round(ects); // ECTS are usually whole numbers
+
+        if (ects >= 210) {
+            textDisplay.innerText = "Excellent! Matches 4-Year German Degree";
+            textDisplay.className = "inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-green-500/20 text-green-400 border border-green-500/30";
+        } else if (ects >= 180) {
+            textDisplay.innerText = "Standard 3-Year Bachelor Equivalent";
+            textDisplay.className = "inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-blue-500/20 text-blue-400 border border-blue-500/30";
+        } else {
+            textDisplay.innerText = "Below Standard (Check Hours/Credit)";
+            textDisplay.className = "inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-yellow-500/20 text-yellow-400 border border-yellow-500/30";
+        }
+
+        document.getElementById('resultBox').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
