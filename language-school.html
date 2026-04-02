@@ -302,7 +302,7 @@
 
                     <div class="flex flex-col items-center justify-center">
                         <div class="bg-white p-2 border border-slate-200 rounded-xl mb-4 w-48 h-48 shadow-sm">
-                            <img src="qr-code.jpeg" alt="UPI QR Code" class="w-full h-full object-cover rounded-lg bg-slate-100" onerror="this.src='https://via.placeholder.com/200x200.png?text=Scan+To+Pay'">
+                            <img src="assets/qrcode.jpeg" alt="UPI QR Code" class="w-full h-full object-cover rounded-lg bg-slate-100" onerror="this.src='https://via.placeholder.com/200x200.png?text=Scan+To+Pay'">
                         </div>
                         <div class="text-center mb-6">
                             <p class="text-sm text-slate-500">Or pay via UPI ID:</p>
@@ -336,25 +336,29 @@
   </section>
 
   <script>
-    // --- SMART INVENTORY SYSTEM (Update these numbers as seats fill up) ---
-    // If seats = 0, the option will be disabled and marked as FULL automatically.
-    const batchInventory = {
-        'A1_6PM': { level: 'A1', label: '06/04/2026 [Monday] - 6:00 to 7:00 PM', seats10: 10, seats6: 6 },
-        'A1_7PM': { level: 'A1', label: '06/04/2026 [Monday] - 7:00 to 8:00 PM', seats10: 10, seats6: 6 },
-        'A2_8PM': { level: 'A2', label: '13/04/2026 [Monday] - 8:00 to 9:00 PM', seats10: 10, seats6: 6 },
-        'B1_9PM': { level: 'B1', label: '20/04/2026 [Monday] - 9:00 to 10:00 PM', seats10: 10, seats6: 6 }
-    };
+    // --- LIVE INVENTORY SYSTEM ---
+    let batchInventory = {}; 
+    
+    // Replace with your Google Apps Script URL
+    const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzoQWt-4-ueK__9OYecQLHBaCxOYbkODIo8cL5LKOLE8QQ6tXN9IZ6d52n_DSV47ztu/exec';
+
+    // Fetch live seats from Google Sheets when page loads
+    window.addEventListener('DOMContentLoaded', () => {
+        fetch(WEBHOOK_URL)
+            .then(res => res.json())
+            .then(data => {
+                if(!data.error) {
+                    batchInventory = data; 
+                    updatePriceAndTimings();
+                }
+            })
+            .catch(err => console.log("Using fallback inventory due to fetch error."));
+    });
 
     // --- Data & Pricing Logic ---
     const pricingData = {
-        10: { // 10 Students per group (Standard Pricing)
-            'A1': 10000, 'A2': 12000, 'B1': 15000,
-            'A1+A2': 20000, 'A1+A2+B1': 35000
-        },
-        6: { // 6 Students per group (Premium Pricing)
-            'A1': 12000, 'A2': 14250, 'B1': 17250,
-            'A1+A2': 24000, 'A1+A2+B1': 39750
-        }
+        10: { 'A1': 10000, 'A2': 12000, 'B1': 15000, 'A1+A2': 20000, 'A1+A2+B1': 35000 },
+        6: { 'A1': 12000, 'A2': 14250, 'B1': 17250, 'A1+A2': 24000, 'A1+A2+B1': 39750 }
     };
 
     const courseLabels = {
@@ -362,12 +366,9 @@
         'A1+A2': '2 Months', 'A1+A2+B1': '3.5 Months'
     };
 
-    // --- UI Initialization ---
     function renderCourses() {
         const singleContainer = document.getElementById('single-levels');
         const comboContainer = document.getElementById('combo-levels');
-        
-        // Limited available levels based on current batches
         const singles = ['A1', 'A2', 'B1'];
         const combos = ['A1+A2', 'A1+A2+B1'];
 
@@ -383,14 +384,11 @@
                 </div>
             </label>
         `;
-
         singleContainer.innerHTML = singles.map(createHTML).join('');
         comboContainer.innerHTML = combos.map(createHTML).join('');
     }
-
     renderCourses();
 
-    // --- State Management ---
     let currentStep = 1;
 
     function getSelectedValues() {
@@ -402,59 +400,48 @@
     function updatePriceAndTimings() {
         const { course, group } = getSelectedValues();
         
-        // 1. Update Price
         const priceEl = document.getElementById('live-price');
         if (course && group && pricingData[group][course]) {
-            const price = pricingData[group][course];
-            priceEl.innerText = `₹${price.toLocaleString('en-IN')}`;
+            priceEl.innerText = `₹${pricingData[group][course].toLocaleString('en-IN')}`;
         } else {
             priceEl.innerText = '₹0';
         }
 
-        // 2. Update Timings Dropdown Dynamically
         const timingSelect = document.getElementById('timingSelect');
         timingSelect.innerHTML = '<option value="">-- Select a Batch --</option>';
 
-        if (course) {
-            // If combo (A1+A2), they must start with the first level (A1)
+        if (course && Object.keys(batchInventory).length > 0) {
             let startingLevel = course.includes('+') ? course.split('+')[0] : course;
-
             let matchesFound = false;
+
             for (const [id, data] of Object.entries(batchInventory)) {
                 if (data.level === startingLevel) {
                     matchesFound = true;
-                    // Check seats based on selected group size
                     const availableSeats = group == 10 ? data.seats10 : data.seats6;
                     const isFull = availableSeats <= 0;
                     
                     const option = document.createElement('option');
-                    option.value = id;
+                    option.value = id; 
                     option.disabled = isFull;
                     
                     if (isFull) {
                         option.innerText = `${data.label} — (FULL)`;
                     } else {
-                        // Optional: Show exact seats left if you want -> `... (${availableSeats} seats left)`
-                        option.innerText = `${data.label}`;
+                        option.innerText = `${data.label} — (${availableSeats} seats left)`;
                     }
                     timingSelect.appendChild(option);
                 }
             }
-
-            if (!matchesFound) {
-                timingSelect.innerHTML = `<option value="">No batches currently open for ${startingLevel}</option>`;
-            }
+            if (!matchesFound) timingSelect.innerHTML = `<option value="">No batches currently open for ${startingLevel}</option>`;
+        } else if (course) {
+            timingSelect.innerHTML = `<option value="">Loading live availability...</option>`;
         }
     }
 
-    // --- Navigation Logic ---
+    // Navigation and Progress Bar
     function nextStep(step) {
-        if (step === 2) {
-            if (!document.querySelector('input[name="courseLevel"]:checked')) { alert("Please select a course level."); return; }
-        }
-        if (step === 3) {
-            if (!document.getElementById('timingSelect').value) { alert("Please select an available timing batch."); return; }
-        }
+        if (step === 2 && !document.querySelector('input[name="courseLevel"]:checked')) { alert("Please select a course level."); return; }
+        if (step === 3 && !document.getElementById('timingSelect').value) { alert("Please select an available timing batch."); return; }
         if (step === 4) {
             const name = document.getElementById('studentName').value;
             const email = document.getElementById('studentEmail').value;
@@ -463,10 +450,12 @@
             if(!name || !email || !phone || !addr) { alert("Please fill all contact details."); return; }
             
             const { course, group } = getSelectedValues();
-            const timingText = document.getElementById('timingSelect').options[document.getElementById('timingSelect').selectedIndex].text;
+            const timingDropdown = document.getElementById('timingSelect');
+            const timingText = timingDropdown.options[timingDropdown.selectedIndex].text;
+            
             document.getElementById('summary-course').innerText = course;
             document.getElementById('summary-group').innerText = `${group} Students / Group`;
-            document.getElementById('summary-timing').innerText = timingText;
+            document.getElementById('summary-timing').innerText = timingText.split(' —')[0]; // Remove seat count from summary
             document.getElementById('summary-price').innerText = document.getElementById('live-price').innerText;
         }
 
@@ -488,7 +477,6 @@
     function updateProgressBar() {
         const progress = ((currentStep - 1) / 3) * 100;
         document.getElementById('progress-bar').style.width = `${progress}%`;
-        
         for(let i=1; i<=4; i++) {
             const ind = document.getElementById(`ind-${i}`);
             if (i < currentStep) {
@@ -504,7 +492,6 @@
         }
     }
 
-    // --- Submission Logic ---
     function submitForm() {
         const txnId = document.getElementById('txnId').value;
         if(!txnId) { alert("Please enter the Transaction ID."); return; }
@@ -512,11 +499,14 @@
         const btn = document.getElementById('submitBtn');
         btn.innerText = "Processing...";
         btn.disabled = true;
+        
+        const timingDropdown = document.getElementById('timingSelect');
 
         const formData = {
             course: document.querySelector('input[name="courseLevel"]:checked').value,
             groupSize: document.querySelector('input[name="groupSize"]:checked').value,
-            timing: document.getElementById('timingSelect').options[document.getElementById('timingSelect').selectedIndex].text,
+            timingId: timingDropdown.value, // Send the BatchID to update inventory
+            timing: timingDropdown.options[timingDropdown.selectedIndex].text.split(' —')[0],
             name: document.getElementById('studentName').value,
             email: document.getElementById('studentEmail').value,
             phone: document.getElementById('studentPhone').value,
@@ -525,7 +515,7 @@
             amount: document.getElementById('summary-price').innerText
         };
 
-        fetch('https://script.google.com/macros/s/AKfycbzoQWt-4-ueK__9OYecQLHBaCxOYbkODIo8cL5LKOLE8QQ6tXN9IZ6d52n_DSV47ztu/exec', {
+        fetch(WEBHOOK_URL, {
             method: 'POST',
             mode: 'no-cors',
             headers: { 'Content-Type': 'application/json' },
@@ -539,7 +529,7 @@
     }
 
     function showSuccess() {
-        document.querySelector('.relative').classList.add('hidden'); // Hide progress bar tracking
+        document.querySelector('.relative').classList.add('hidden'); 
         document.querySelectorAll('.step-content').forEach(el => el.classList.remove('step-active'));
         document.getElementById('step-success').classList.add('step-active');
         window.scrollTo({ top: document.getElementById('booking-funnel').offsetTop - 100, behavior: 'smooth' });
