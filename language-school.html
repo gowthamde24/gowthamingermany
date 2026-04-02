@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn German | Gowtham IN Germany</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brand: '#e11d48', dark: '#0f172a' }, fontFamily: { sans: ['Inter', 'sans-serif'] } } },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .step-content { display: none; animation: fadeIn 0.4s ease-in-out; }
+    .step-active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    
+    /* Custom Radio Styling */
+    .custom-radio input:checked + div { border-color: #e11d48; background-color: rgba(225, 29, 72, 0.1); }
+    .custom-radio input:checked + div .radio-dot { background-color: #e11d48; border-color: #e11d48; }
+  </style>
+</head>
+
+<body class="bg-dark text-slate-200 min-h-screen flex flex-col">
+
+  <nav class="w-full border-b border-white/10 bg-dark/80 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
+      <a href="index.html" class="flex items-center gap-2 text-slate-400 hover:text-white transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
+        Back to Home
+      </a>
+      <span class="font-bold text-white">German <span class="text-brand">Language School</span></span>
+    </div>
+  </nav>
+
+  <section class="py-16 px-6 relative overflow-hidden" id="hero">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand blur-[150px] opacity-15 w-[600px] h-[600px] rounded-full -z-10"></div>
+    <div class="max-w-3xl mx-auto text-center">
+        <div class="inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-brand/20 text-brand border border-brand/30 mb-6">
+            🎉 Limited Time: 25% OFF on all batches!
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6">Master German with <span class="text-brand">Dr. Bhupesh</span></h1>
+        <p class="text-slate-400 text-lg mb-8">Join thousands of students worldwide. 100% Online, high-quality, and results-driven training. Hard-copy materials delivered to your doorstep in India.</p>
+        <button onclick="document.getElementById('booking-funnel').scrollIntoView();" class="px-8 py-4 rounded-xl bg-gradient-to-r from-brand to-rose-600 font-bold text-white text-lg hover:shadow-lg hover:shadow-brand/25 transition transform hover:-translate-y-1">
+            Enroll Now
+        </button>
+    </div>
+  </section>
+
+  <section id="booking-funnel" class="py-12 px-6 flex-grow">
+    <div class="max-w-3xl mx-auto glass-card rounded-3xl p-6 md:p-10 shadow-2xl relative">
+        
+        <div class="flex items-center justify-between mb-8 relative">
+            <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-slate-800 -z-10 rounded-full"></div>
+            <div class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-brand -z-10 rounded-full transition-all duration-300" id="progress-bar" style="width: 0%;"></div>
+            
+            <div class="w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm step-indicator" id="ind-1">1</div>
+            <div class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-sm step-indicator border border-slate-700" id="ind-2">2</div>
+            <div class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-sm step-indicator border border-slate-700" id="ind-3">3</div>
+            <div class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-sm step-indicator border border-slate-700" id="ind-4">4</div>
+        </div>
+
+        <form id="enrollmentForm" onsubmit="event.preventDefault(); submitForm();">
+            
+            <div id="step-1" class="step-content step-active">
+                <h2 class="text-2xl font-bold text-white mb-2">Select Course Level</h2>
+                <p class="text-slate-400 text-sm mb-6">Combo offers include all study materials at once and reserve your seat until completion.</p>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">Single Levels</h3>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                            <div id="single-levels" class="contents"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-sm font-bold text-brand uppercase tracking-wider mb-3 flex items-center gap-2">⭐ Combo Offers (Best Value)</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                             <div id="combo-levels" class="contents"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex justify-end">
+                    <button type="button" onclick="nextStep(2)" class="px-6 py-3 bg-white text-dark font-bold rounded-xl hover:bg-slate-200 transition">Next Step</button>
+                </div>
+            </div>
+
+            <div id="step-2" class="step-content">
+                <h2 class="text-2xl font-bold text-white mb-2">Group Size & Timings</h2>
+                <p class="text-slate-400 text-sm mb-6">Select your preferred batch type and timing.</p>
+
+                <div class="space-y-8">
+                    <div>
+                        <label class="block text-sm font-bold text-slate-300 mb-3">Select Group Size</label>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <label class="custom-radio cursor-pointer">
+                                <input type="radio" name="groupSize" value="5" class="sr-only" onchange="updatePriceDisplay()" checked>
+                                <div class="border border-slate-700 rounded-xl p-4 flex items-center gap-4 transition hover:bg-white/5">
+                                    <div class="w-5 h-5 rounded-full border-2 border-slate-500 flex items-center justify-center radio-dot transition"></div>
+                                    <div>
+                                        <div class="font-bold text-white">5 Students / Group</div>
+                                        <div class="text-sm text-slate-400">Standard Pricing</div>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="custom-radio cursor-pointer">
+                                <input type="radio" name="groupSize" value="3" class="sr-only" onchange="updatePriceDisplay()">
+                                <div class="border border-slate-700 rounded-xl p-4 flex items-center gap-4 transition hover:bg-white/5">
+                                    <div class="w-5 h-5 rounded-full border-2 border-slate-500 flex items-center justify-center radio-dot transition"></div>
+                                    <div>
+                                        <div class="font-bold text-white">3 Students / Group</div>
+                                        <div class="text-sm text-brand font-medium">Premium Focus</div>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-slate-300 mb-3">Preferred Timing</label>
+                        <select id="timingSelect" class="w-full bg-black/40 border border-slate-600 rounded-xl p-4 text-white focus:border-brand focus:ring-1 focus:ring-brand outline-none transition">
+                            <option value="">-- Select a Batch --</option>
+                            <option value="morning_9_10">Morning (9:00 - 10:00 AM)</option>
+                            <option value="morning_11_12">Morning (11:00 - 12:00 PM)</option>
+                            <option value="afternoon_12_1">Afternoon (12:00 - 1:00 PM)</option>
+                            <option value="evening_6_7">Evening (6:00 - 7:00 PM)</option>
+                            <option value="evening_7_8">Evening (7:00 - 8:00 PM)</option>
+                        </select>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-brand/10 border border-brand/20 flex justify-between items-center">
+                        <span class="text-slate-300">Your Calculated Price:</span>
+                        <span class="text-2xl font-black text-white" id="live-price">₹0</span>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex justify-between">
+                    <button type="button" onclick="prevStep(1)" class="px-6 py-3 text-slate-400 hover:text-white transition">Back</button>
+                    <button type="button" onclick="nextStep(3)" class="px-6 py-3 bg-white text-dark font-bold rounded-xl hover:bg-slate-200 transition">Next Step</button>
+                </div>
+            </div>
+
+            <div id="step-3" class="step-content">
+                <h2 class="text-2xl font-bold text-white mb-2">Student Details</h2>
+                <p class="text-slate-400 text-sm mb-6">We need this to send your hard-copy study materials and class links.</p>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">Full Name</label>
+                        <input type="text" id="studentName" placeholder="e.g. Rahul Kumar" class="w-full bg-black/40 border border-slate-600 rounded-xl p-3 text-white focus:border-brand outline-none transition" required>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">Email Address</label>
+                            <input type="email" id="studentEmail" placeholder="rahul@example.com" class="w-full bg-black/40 border border-slate-600 rounded-xl p-3 text-white focus:border-brand outline-none transition" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-300 mb-1">WhatsApp Number</label>
+                            <input type="tel" id="studentPhone" placeholder="+91 9876543210" class="w-full bg-black/40 border border-slate-600 rounded-xl p-3 text-white focus:border-brand outline-none transition" required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-slate-300 mb-1">Complete Delivery Address</label>
+                        <textarea id="studentAddress" rows="3" placeholder="House/Flat No, Street, Landmark, City, State, PIN Code" class="w-full bg-black/40 border border-slate-600 rounded-xl p-3 text-white focus:border-brand outline-none transition resize-none" required></textarea>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex justify-between">
+                    <button type="button" onclick="prevStep(2)" class="px-6 py-3 text-slate-400 hover:text-white transition">Back</button>
+                    <button type="button" onclick="nextStep(4)" class="px-6 py-3 bg-white text-dark font-bold rounded-xl hover:bg-slate-200 transition">Proceed to Payment</button>
+                </div>
+            </div>
+
+            <div id="step-4" class="step-content">
+                <h2 class="text-2xl font-bold text-white mb-2">Checkout</h2>
+                <p class="text-slate-400 text-sm mb-6">Scan the QR code to complete your enrollment.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-black/30 rounded-2xl p-6 border border-slate-700">
+                        <h3 class="font-bold text-white mb-4">Order Summary</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between text-slate-300"><span class="text-slate-500">Course:</span> <span id="summary-course" class="font-bold">--</span></div>
+                            <div class="flex justify-between text-slate-300"><span class="text-slate-500">Group Size:</span> <span id="summary-group">--</span></div>
+                            <div class="flex justify-between text-slate-300"><span class="text-slate-500">Timing:</span> <span id="summary-timing">--</span></div>
+                            <div class="border-t border-slate-700 my-2 pt-2 flex justify-between">
+                                <span class="text-white font-bold">Total Amount Payable:</span> 
+                                <span id="summary-price" class="text-brand font-black text-lg">₹0</span>
+                            </div>
+                        </div>
+                        <ul class="mt-4 space-y-1 text-xs text-slate-500">
+                            <li>✓ Live Classes</li>
+                            <li>✓ Study Materials Included</li>
+                            <li>✓ Course Certificate</li>
+                        </ul>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <div class="bg-white p-2 rounded-xl mb-4 w-48 h-48">
+                            <img src="assets/qrcode.jpeg" alt="UPI QR Code" class="w-full h-full object-cover rounded-lg bg-gray-200" onerror="this.src='https://via.placeholder.com/200x200.png?text=Scan+To+Pay'">
+                        </div>
+                        <div class="text-center mb-6">
+                            <p class="text-sm text-slate-400">Or pay via UPI ID:</p>
+                            <p class="font-bold text-white font-mono bg-slate-800 px-3 py-1 rounded mt-1 select-all">9440977111@ybl</p>
+                        </div>
+                        
+                        <div class="w-full">
+                            <label class="block text-sm font-medium text-brand mb-1">Enter UTR / Transaction ID *</label>
+                            <input type="text" id="txnId" placeholder="e.g. 301234567890" class="w-full bg-brand/5 border border-brand/50 rounded-xl p-3 text-white focus:ring-1 focus:ring-brand outline-none transition" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 flex justify-between">
+                    <button type="button" onclick="prevStep(3)" class="px-6 py-3 text-slate-400 hover:text-white transition">Back</button>
+                    <button type="submit" id="submitBtn" class="px-8 py-3 bg-gradient-to-r from-brand to-rose-600 font-bold text-white rounded-xl hover:shadow-lg transition">Complete Enrollment</button>
+                </div>
+            </div>
+
+            <div id="step-success" class="step-content text-center py-8">
+                <div class="w-20 h-20 mx-auto bg-green-500/20 text-green-500 rounded-full flex items-center justify-center text-4xl mb-4">✓</div>
+                <h2 class="text-3xl font-black text-white mb-2">Enrollment Received!</h2>
+                <p class="text-slate-400 max-w-md mx-auto mb-6">Thank you for registering. We are verifying your payment and will send the study materials and class link to your WhatsApp shortly.</p>
+                <a href="index.html" class="px-6 py-3 border border-slate-600 rounded-xl text-white hover:bg-slate-800 transition">Back to Home</a>
+            </div>
+
+        </form>
+    </div>
+  </section>
+
+  <script>
+    // --- Data & Pricing Logic ---
+    const pricingData = {
+        5: { // 5 Students per group
+            'A1': 10000, 'A2': 12000, 'B1': 15000, 'B2': 18000, 'C1': 21000, 'C2': 24000,
+            'A1+A2': 20000, 'A1+A2+B1': 35000, 'A1+A2+B1+B2': 50000, 'A1+A2+B1+B2+C1': 70000, 'A1+A2+B1+B2+C1+C2': 90000
+        },
+        3: { // 3 Students per group
+            'A1': 12000, 'A2': 14250, 'B1': 17250, 'B2': 20250, 'C1': 23250, 'C2': 26250,
+            'A1+A2': 24000, 'A1+A2+B1': 39750, 'A1+A2+B1+B2': 60000, 'A1+A2+B1+B2+C1': 78750, 'A1+A2+B1+B2+C1+C2': 97500
+        }
+    };
+
+    const courseLabels = {
+        'A1': '1 Month', 'A2': '1 Month', 'B1': '45 Days', 'B2': '45 Days', 'C1': '2 Months', 'C2': '2 Months',
+        'A1+A2': '2 Months', 'A1+A2+B1': '3.5 Months', 'A1+A2+B1+B2': '5 Months', 'A1+A2+B1+B2+C1': '7 Months', 'A1+A2+B1+B2+C1+C2': '9 Months'
+    };
+
+    // --- UI Initialization ---
+    function renderCourses() {
+        const singleContainer = document.getElementById('single-levels');
+        const comboContainer = document.getElementById('combo-levels');
+        
+        const singles = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+        const combos = ['A1+A2', 'A1+A2+B1', 'A1+A2+B1+B2', 'A1+A2+B1+B2+C1', 'A1+A2+B1+B2+C1+C2'];
+
+        const createHTML = (lvl) => `
+            <label class="custom-radio cursor-pointer">
+                <input type="radio" name="courseLevel" value="${lvl}" class="sr-only" onchange="updatePriceDisplay()">
+                <div class="border border-slate-700 rounded-xl p-3 flex justify-between items-center transition hover:bg-white/5">
+                    <div>
+                        <div class="font-bold text-white">${lvl}</div>
+                        <div class="text-xs text-slate-400">${courseLabels[lvl]}</div>
+                    </div>
+                    <div class="w-4 h-4 rounded-full border-2 border-slate-500 flex items-center justify-center radio-dot transition"></div>
+                </div>
+            </label>
+        `;
+
+        singleContainer.innerHTML = singles.map(createHTML).join('');
+        comboContainer.innerHTML = combos.map(createHTML).join('');
+    }
+
+    renderCourses();
+
+    // --- State Management ---
+    let currentStep = 1;
+
+    function getSelectedValues() {
+        const course = document.querySelector('input[name="courseLevel"]:checked')?.value;
+        const group = document.querySelector('input[name="groupSize"]:checked')?.value;
+        return { course, group };
+    }
+
+    function updatePriceDisplay() {
+        const { course, group } = getSelectedValues();
+        const priceEl = document.getElementById('live-price');
+        
+        if (course && group && pricingData[group][course]) {
+            const price = pricingData[group][course];
+            priceEl.innerText = `₹${price.toLocaleString('en-IN')}`;
+        } else {
+            priceEl.innerText = '₹0';
+        }
+    }
+
+    // --- Navigation Logic ---
+    function nextStep(step) {
+        // Validation before proceeding
+        if (step === 2) {
+            if (!document.querySelector('input[name="courseLevel"]:checked')) { alert("Please select a course level."); return; }
+        }
+        if (step === 3) {
+            if (!document.getElementById('timingSelect').value) { alert("Please select a preferred timing."); return; }
+        }
+        if (step === 4) {
+            const name = document.getElementById('studentName').value;
+            const email = document.getElementById('studentEmail').value;
+            const phone = document.getElementById('studentPhone').value;
+            const addr = document.getElementById('studentAddress').value;
+            if(!name || !email || !phone || !addr) { alert("Please fill all contact details."); return; }
+            
+            // Populate Summary
+            const { course, group } = getSelectedValues();
+            const timingText = document.getElementById('timingSelect').options[document.getElementById('timingSelect').selectedIndex].text;
+            document.getElementById('summary-course').innerText = course;
+            document.getElementById('summary-group').innerText = `${group} Students / Group`;
+            document.getElementById('summary-timing').innerText = timingText;
+            document.getElementById('summary-price').innerText = document.getElementById('live-price').innerText;
+        }
+
+        document.querySelectorAll('.step-content').forEach(el => el.classList.remove('step-active'));
+        document.getElementById(`step-${step}`).classList.add('step-active');
+        currentStep = step;
+        updateProgressBar();
+    }
+
+    function prevStep(step) {
+        document.querySelectorAll('.step-content').forEach(el => el.classList.remove('step-active'));
+        document.getElementById(`step-${step}`).classList.add('step-active');
+        currentStep = step;
+        updateProgressBar();
+    }
+
+    function updateProgressBar() {
+        const progress = ((currentStep - 1) / 3) * 100;
+        document.getElementById('progress-bar').style.width = `${progress}%`;
+        
+        for(let i=1; i<=4; i++) {
+            const ind = document.getElementById(`ind-${i}`);
+            if (i < currentStep) {
+                ind.className = "w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm step-indicator";
+                ind.innerHTML = "✓";
+            } else if (i === currentStep) {
+                ind.className = "w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm step-indicator ring-4 ring-brand/20";
+                ind.innerHTML = i;
+            } else {
+                ind.className = "w-8 h-8 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-sm step-indicator border border-slate-700";
+                ind.innerHTML = i;
+            }
+        }
+    }
+
+    // --- Submission Logic ---
+    function submitForm() {
+        const txnId = document.getElementById('txnId').value;
+        if(!txnId) { alert("Please enter the Transaction ID."); return; }
+
+        const btn = document.getElementById('submitBtn');
+        btn.innerText = "Processing...";
+        btn.disabled = true;
+
+        // Data Collection
+        const formData = {
+            course: document.querySelector('input[name="courseLevel"]:checked').value,
+            groupSize: document.querySelector('input[name="groupSize"]:checked').value,
+            timing: document.getElementById('timingSelect').value,
+            name: document.getElementById('studentName').value,
+            email: document.getElementById('studentEmail').value,
+            phone: document.getElementById('studentPhone').value,
+            address: document.getElementById('studentAddress').value,
+            txnId: txnId,
+            amount: document.getElementById('summary-price').innerText
+        };
+
+        /* ========================================================
+        Backend Integration Point (Google Apps Script Webhook)
+        ========================================================
+        Uncomment the code below once you have created your 
+        Google Apps Script Web App URL and replace 'YOUR_URL_HERE'
+        */
+        
+        
+        fetch('https://script.google.com/macros/s/AKfycbzoQWt-4-ueK__9OYecQLHBaCxOYbkODIo8cL5LKOLE8QQ6tXN9IZ6d52n_DSV47ztu/exec', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(formData)
+        }).then(() => {
+            showSuccess();
+        }).catch((err) => {
+            console.error(err);
+            // Even if fetch fails due to CORS, GAS often still records the row.
+            showSuccess();
+        });
+        
+
+        // Simulated delay for demo purposes
+        setTimeout(() => { showSuccess(); }, 1500);
+    }
+
+    function showSuccess() {
+        document.querySelector('.relative').classList.add('hidden'); // Hide progress bar
+        document.querySelectorAll('.step-content').forEach(el => el.classList.remove('step-active'));
+        document.getElementById('step-success').classList.add('step-active');
+    }
+  </script>
+</body>
+</html>
