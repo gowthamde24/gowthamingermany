@@ -3,82 +3,185 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Learn German | Gowtham IN Germany</title>
+  <title>Partner Language School | Gowtham IN Germany</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: { extend: { colors: { brand: '#e11d48', dark: '#0f172a' }, fontFamily: { sans: ['Inter', 'sans-serif'] } } },
+      theme: { 
+        extend: { 
+            colors: { 
+                brand: '#e11d48', 
+                brandDark: '#be123c',
+                lightBg: '#f8fafc' 
+            }, 
+            fontFamily: { sans: ['Inter', 'sans-serif'] } 
+        } 
+      },
     };
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', sans-serif; }
-    .glass-card { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+    .commercial-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    }
     .step-content { display: none; animation: fadeIn 0.4s ease-in-out; }
     .step-active { display: block; }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     
-    /* Custom Radio Styling */
-    .custom-radio input:checked + div { border-color: #e11d48; background-color: rgba(225, 29, 72, 0.1); }
+    /* Custom Radio Styling for Light Theme */
+    .custom-radio input:checked + div { border-color: #e11d48; background-color: #fff1f2; }
     .custom-radio input:checked + div .radio-dot { background-color: #e11d48; border-color: #e11d48; }
+    
+    select option:disabled { color: #94a3b8; font-style: italic; }
   </style>
 </head>
 
-<body class="bg-dark text-slate-200 min-h-screen flex flex-col">
+<body class="bg-lightBg text-slate-800 min-h-screen flex flex-col">
 
-  <nav class="w-full border-b border-white/10 bg-dark/80 backdrop-blur-md sticky top-0 z-50">
+  <nav class="sticky top-0 z-50 w-full bg-white border-b border-slate-200 shadow-sm">
     <div class="max-w-7xl mx-auto flex items-center justify-between p-4">
-      <a href="index.html" class="flex items-center gap-2 text-slate-400 hover:text-white transition">
+      <a href="index.html" class="flex items-center gap-2 text-slate-600 hover:text-brand transition font-medium text-sm">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>
         Back to Home
       </a>
-      <span class="font-bold text-white">German <span class="text-brand">Language School</span></span>
+      <span class="font-bold text-slate-900 tracking-tight text-lg">Partner <span class="text-brand">Language School</span></span>
     </div>
   </nav>
 
-  <section class="py-16 px-6 relative overflow-hidden" id="hero">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-brand blur-[150px] opacity-15 w-[600px] h-[600px] rounded-full -z-10"></div>
+  <section class="pt-16 pb-12 px-6 relative overflow-hidden" id="hero">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-brand/5 blur-[100px] rounded-full -z-10"></div>
     <div class="max-w-3xl mx-auto text-center">
-        <div class="inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-brand/20 text-brand border border-brand/30 mb-6">
-            🎉 Limited Time: 25% OFF on all batches!
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold bg-brand/10 text-brand border border-brand/20 mb-6">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            Limited Time: 25% OFF on all batches
         </div>
-        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6">Master German with <span class="text-brand">Dr. Bhupesh</span></h1>
-        <p class="text-slate-400 text-lg mb-8">Join thousands of students worldwide. 100% Online, high-quality, and results-driven training. Hard-copy materials delivered to your doorstep in India.</p>
-        <button onclick="document.getElementById('booking-funnel').scrollIntoView();" class="px-8 py-4 rounded-xl bg-gradient-to-r from-brand to-rose-600 font-bold text-white text-lg hover:shadow-lg hover:shadow-brand/25 transition transform hover:-translate-y-1">
-            Enroll Now
-        </button>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 tracking-tight">Master German with <span class="text-brand">Dr. Bhupesh</span></h1>
+        <p class="text-slate-600 text-lg leading-relaxed">Join thousands of students worldwide. 100% Online, high-quality, and results-driven training. Hard-copy materials delivered to your doorstep in India.</p>
+    </div>
+  </section>
+
+  <section class="py-12 px-6 bg-white border-y border-slate-200 z-10 relative">
+    <div class="max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            
+            <div class="space-y-6">
+                <div class="flex items-center gap-4 mb-2">
+                    <div class="w-16 h-16 rounded-2xl bg-brand/10 text-brand flex items-center justify-center border border-brand/20">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-black text-slate-900">Dr. Bhupesh Parise</h2>
+                        <p class="text-brand font-bold text-sm tracking-wide uppercase">Ph.D. & MBA (Germany)</p>
+                    </div>
+                </div>
+                
+                <p class="text-slate-600 leading-relaxed text-sm">
+                    With over 18 years of teaching experience and a deep passion for linguistics, Dr. Bhupesh has successfully trained <strong>over 3,000+ students</strong> since 2014. Having lived and studied in Germany, he teaches not just the language, but the authentic culture required to succeed abroad.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100">
+                    <div class="flex gap-3">
+                        <svg class="w-5 h-5 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">DAAD Scholar</h4>
+                            <p class="text-xs text-slate-500 mt-1">Prestigious STIBET teaching assistantship (2010 & 2011).</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <svg class="w-5 h-5 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Corporate Trainer</h4>
+                            <p class="text-xs text-slate-500 mt-1">Trained engineers at MNCs like Grupo Antolin India.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="commercial-card p-8 rounded-3xl bg-slate-50 border border-slate-200">
+                <h3 class="text-xl font-bold text-slate-900 mb-6">Why German Language School?</h3>
+                
+                <ul class="space-y-5">
+                    <li class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0 mt-0.5">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Comprehensive Study Material</h4>
+                            <p class="text-xs text-slate-600 mt-1">Get physical practice books, PPTs, and structured audio files for listening practice.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0 mt-0.5">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Goethe & TELC Exam Focus</h4>
+                            <p class="text-xs text-slate-600 mt-1">Includes 10 specialized Mock Tests designed to help you clear the final embassy-approved exams.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0 mt-0.5">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Interactive & Live Learning</h4>
+                            <p class="text-xs text-slate-600 mt-1">Strict limits of 6 or 10 students per batch ensuring personal attention for speaking and writing.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center shrink-0 mt-0.5">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Course Certification</h4>
+                            <p class="text-xs text-slate-600 mt-1">Receive a formal course completion certificate upon finishing your level.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
     </div>
   </section>
 
   <section id="booking-funnel" class="py-12 px-6 flex-grow">
-    <div class="max-w-3xl mx-auto glass-card rounded-3xl p-6 md:p-10 shadow-2xl relative">
+    <div class="max-w-3xl mx-auto commercial-card rounded-3xl p-6 md:p-10 shadow-xl relative">
         
         <div class="flex items-center justify-between mb-8 relative">
-            <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-slate-800 -z-10 rounded-full"></div>
+            <div class="absolute left-0 top-1/2 -translate-y-1/2 w-full h-1 bg-slate-200 -z-10 rounded-full"></div>
             <div class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-brand -z-10 rounded-full transition-all duration-300" id="progress-bar" style="width: 0%;"></div>
             
-            <div class="w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm step-indicator" id="ind-1">1</div>
-            <div class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-sm step-indicator border border-slate-700" id="ind-2">2</div>
-            <div class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-sm step-indicator border border-slate-700" id="ind-3">3</div>
-            <div class="w-8 h-8 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-sm step-indicator border border-slate-700" id="ind-4">4</div>
+            <div class="w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm step-indicator shadow-md" id="ind-1">1</div>
+            <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center font-bold text-sm step-indicator border border-slate-300" id="ind-2">2</div>
+            <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center font-bold text-sm step-indicator border border-slate-300" id="ind-3">3</div>
+            <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center font-bold text-sm step-indicator border border-slate-300" id="ind-4">4</div>
         </div>
 
         <form id="enrollmentForm" onsubmit="event.preventDefault(); submitForm();">
             
             <div id="step-1" class="step-content step-active">
-                <h2 class="text-2xl font-bold text-white mb-2">Select Course Level</h2>
-                <p class="text-slate-400 text-sm mb-6">Combo offers include all study materials at once and reserve your seat until completion.</p>
+                <div class="flex items-center justify-between mb-2">
+                    <h2 class="text-2xl font-bold text-slate-900">Select Course Level</h2>
+                    <span class="text-xs font-bold text-brand bg-brand/10 px-2 py-1 rounded border border-brand/20">Current Openings Only</span>
+                </div>
+                <p class="text-slate-500 text-sm mb-6">Select the level you wish to begin. Combo offers include all study materials at once.</p>
                 
                 <div class="space-y-6">
                     <div>
-                        <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">Single Levels</h3>
+                        <h3 class="text-sm font-bold text-slate-600 uppercase tracking-wider mb-3">Single Levels</h3>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
                             <div id="single-levels" class="contents"></div>
                         </div>
                     </div>
                     
-                    <div>
-                        <h3 class="text-sm font-bold text-brand uppercase tracking-wider mb-3 flex items-center gap-2">⭐ Combo Offers (Best Value)</h3>
+                    <div class="pt-4 border-t border-slate-100">
+                        <h3 class="text-sm font-bold text-brand uppercase tracking-wider mb-3 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
+                            Combo Offers (Best Value)
+                        </h3>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                              <div id="combo-levels" class="contents"></div>
                         </div>
@@ -86,35 +189,35 @@
                 </div>
 
                 <div class="mt-8 flex justify-end">
-                    <button type="button" onclick="nextStep(2)" class="px-6 py-3 bg-white text-dark font-bold rounded-xl hover:bg-slate-200 transition">Next Step</button>
+                    <button type="button" onclick="nextStep(2)" class="px-6 py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition shadow-md">Next Step</button>
                 </div>
             </div>
 
             <div id="step-2" class="step-content">
-                <h2 class="text-2xl font-bold text-white mb-2">Group Size & Timings</h2>
-                <p class="text-slate-400 text-sm mb-6">Select your preferred batch type and timing.</p>
+                <h2 class="text-2xl font-bold text-slate-900 mb-2">Group Size & Timings</h2>
+                <p class="text-slate-500 text-sm mb-6">Select your batch. If a batch is marked as FULL, you cannot register for it.</p>
 
                 <div class="space-y-8">
                     <div>
-                        <label class="block text-sm font-bold text-slate-300 mb-3">Select Group Size</label>
+                        <label class="block text-sm font-bold text-slate-700 mb-3">Select Group Size</label>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <label class="custom-radio cursor-pointer">
-                                <input type="radio" name="groupSize" value="5" class="sr-only" onchange="updatePriceDisplay()" checked>
-                                <div class="border border-slate-700 rounded-xl p-4 flex items-center gap-4 transition hover:bg-white/5">
-                                    <div class="w-5 h-5 rounded-full border-2 border-slate-500 flex items-center justify-center radio-dot transition"></div>
+                                <input type="radio" name="groupSize" value="10" class="sr-only" onchange="updatePriceAndTimings()" checked>
+                                <div class="bg-white border border-slate-200 rounded-xl p-4 flex items-center gap-4 transition hover:bg-slate-50">
+                                    <div class="w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center radio-dot transition"></div>
                                     <div>
-                                        <div class="font-bold text-white">5 Students / Group</div>
-                                        <div class="text-sm text-slate-400">Standard Pricing</div>
+                                        <div class="font-bold text-slate-900">10 Students / Group</div>
+                                        <div class="text-sm text-slate-500">Standard Pricing</div>
                                     </div>
                                 </div>
                             </label>
                             
                             <label class="custom-radio cursor-pointer">
-                                <input type="radio" name="groupSize" value="3" class="sr-only" onchange="updatePriceDisplay()">
-                                <div class="border border-slate-700 rounded-xl p-4 flex items-center gap-4 transition hover:bg-white/5">
-                                    <div class="w-5 h-5 rounded-full border-2 border-slate-500 flex items-center justify-center radio-dot transition"></div>
+                                <input type="radio" name="groupSize" value="6" class="sr-only" onchange="updatePriceAndTimings()">
+                                <div class="bg-white border border-slate-200 rounded-xl p-4 flex items-center gap-4 transition hover:bg-slate-50">
+                                    <div class="w-5 h-5 rounded-full border-2 border-slate-300 flex items-center justify-center radio-dot transition"></div>
                                     <div>
-                                        <div class="font-bold text-white">3 Students / Group</div>
+                                        <div class="font-bold text-slate-900">6 Students / Group</div>
                                         <div class="text-sm text-brand font-medium">Premium Focus</div>
                                     </div>
                                 </div>
@@ -123,112 +226,109 @@
                     </div>
 
                     <div>
-                        <label class="block text-sm font-bold text-slate-300 mb-3">Preferred Timing</label>
-                        <select id="timingSelect" class="w-full bg-black/40 border border-slate-600 rounded-xl p-4 text-white focus:border-brand focus:ring-1 focus:ring-brand outline-none transition">
-                            <option value="">-- Select a Batch --</option>
-                            <option value="morning_9_10">Morning (9:00 - 10:00 AM)</option>
-                            <option value="morning_11_12">Morning (11:00 - 12:00 PM)</option>
-                            <option value="afternoon_12_1">Afternoon (12:00 - 1:00 PM)</option>
-                            <option value="evening_6_7">Evening (6:00 - 7:00 PM)</option>
-                            <option value="evening_7_8">Evening (7:00 - 8:00 PM)</option>
+                        <label class="block text-sm font-bold text-slate-700 mb-3">Available Timings (Based on your level)</label>
+                        <select id="timingSelect" class="w-full bg-white border border-slate-200 rounded-xl p-4 text-slate-900 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition shadow-sm">
+                            <option value="">-- Select Course Level First --</option>
                         </select>
                     </div>
 
-                    <div class="p-4 rounded-xl bg-brand/10 border border-brand/20 flex justify-between items-center">
-                        <span class="text-slate-300">Your Calculated Price:</span>
-                        <span class="text-2xl font-black text-white" id="live-price">₹0</span>
+                    <div class="p-5 rounded-xl bg-brand/5 border border-brand/20 flex justify-between items-center">
+                        <span class="text-slate-700 font-medium">Your Calculated Price:</span>
+                        <span class="text-2xl font-black text-brand" id="live-price">₹0</span>
                     </div>
                 </div>
 
-                <div class="mt-8 flex justify-between">
-                    <button type="button" onclick="prevStep(1)" class="px-6 py-3 text-slate-400 hover:text-white transition">Back</button>
-                    <button type="button" onclick="nextStep(3)" class="px-6 py-3 bg-white text-dark font-bold rounded-xl hover:bg-slate-200 transition">Next Step</button>
+                <div class="mt-8 flex justify-between items-center">
+                    <button type="button" onclick="prevStep(1)" class="px-6 py-3 text-slate-500 font-medium hover:text-slate-900 transition">Back</button>
+                    <button type="button" onclick="nextStep(3)" class="px-6 py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition shadow-md">Next Step</button>
                 </div>
             </div>
 
             <div id="step-3" class="step-content">
-                <h2 class="text-2xl font-bold text-white mb-2">Student Details</h2>
-                <p class="text-slate-400 text-sm mb-6">We need this to send your hard-copy study materials and class links.</p>
+                <h2 class="text-2xl font-bold text-slate-900 mb-2">Student Details</h2>
+                <p class="text-slate-500 text-sm mb-6">We need this to send your hard-copy study materials and class links.</p>
 
-                <div class="space-y-4">
+                <div class="space-y-5">
                     <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-1">Full Name</label>
-                        <input type="text" id="studentName" placeholder="e.g. Rahul Kumar" class="w-full bg-black/40 border border-slate-600 rounded-xl p-3 text-white focus:border-brand outline-none transition" required>
+                        <label class="block text-sm font-bold text-slate-700 mb-1">Full Name</label>
+                        <input type="text" id="studentName" placeholder="e.g. Rahul Kumar" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-slate-900 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition" required>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                         <div>
-                            <label class="block text-sm font-medium text-slate-300 mb-1">Email Address</label>
-                            <input type="email" id="studentEmail" placeholder="rahul@example.com" class="w-full bg-black/40 border border-slate-600 rounded-xl p-3 text-white focus:border-brand outline-none transition" required>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">Email Address</label>
+                            <input type="email" id="studentEmail" placeholder="rahul@example.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-slate-900 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition" required>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-slate-300 mb-1">WhatsApp Number</label>
-                            <input type="tel" id="studentPhone" placeholder="+91 9876543210" class="w-full bg-black/40 border border-slate-600 rounded-xl p-3 text-white focus:border-brand outline-none transition" required>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">WhatsApp Number</label>
+                            <input type="tel" id="studentPhone" placeholder="+91 9876543210" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-slate-900 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition" required>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-sm font-medium text-slate-300 mb-1">Complete Delivery Address</label>
-                        <textarea id="studentAddress" rows="3" placeholder="House/Flat No, Street, Landmark, City, State, PIN Code" class="w-full bg-black/40 border border-slate-600 rounded-xl p-3 text-white focus:border-brand outline-none transition resize-none" required></textarea>
+                        <label class="block text-sm font-bold text-slate-700 mb-1">Complete Delivery Address</label>
+                        <textarea id="studentAddress" rows="3" placeholder="House/Flat No, Street, Landmark, City, State, PIN Code" class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-slate-900 focus:border-brand focus:ring-1 focus:ring-brand outline-none transition resize-none" required></textarea>
                     </div>
                 </div>
 
-                <div class="mt-8 flex justify-between">
-                    <button type="button" onclick="prevStep(2)" class="px-6 py-3 text-slate-400 hover:text-white transition">Back</button>
-                    <button type="button" onclick="nextStep(4)" class="px-6 py-3 bg-white text-dark font-bold rounded-xl hover:bg-slate-200 transition">Proceed to Payment</button>
+                <div class="mt-8 flex justify-between items-center">
+                    <button type="button" onclick="prevStep(2)" class="px-6 py-3 text-slate-500 font-medium hover:text-slate-900 transition">Back</button>
+                    <button type="button" onclick="nextStep(4)" class="px-6 py-3 bg-slate-900 text-white font-bold rounded-xl hover:bg-slate-800 transition shadow-md">Proceed to Payment</button>
                 </div>
             </div>
 
             <div id="step-4" class="step-content">
-                <h2 class="text-2xl font-bold text-white mb-2">Checkout</h2>
-                <p class="text-slate-400 text-sm mb-6">Scan the QR code to complete your enrollment.</p>
+                <h2 class="text-2xl font-bold text-slate-900 mb-2">Checkout</h2>
+                <p class="text-slate-500 text-sm mb-6">Scan the QR code or use the UPI ID to complete your enrollment.</p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-black/30 rounded-2xl p-6 border border-slate-700">
-                        <h3 class="font-bold text-white mb-4">Order Summary</h3>
-                        <div class="space-y-2 text-sm">
-                            <div class="flex justify-between text-slate-300"><span class="text-slate-500">Course:</span> <span id="summary-course" class="font-bold">--</span></div>
-                            <div class="flex justify-between text-slate-300"><span class="text-slate-500">Group Size:</span> <span id="summary-group">--</span></div>
-                            <div class="flex justify-between text-slate-300"><span class="text-slate-500">Timing:</span> <span id="summary-timing">--</span></div>
-                            <div class="border-t border-slate-700 my-2 pt-2 flex justify-between">
-                                <span class="text-white font-bold">Total Amount Payable:</span> 
-                                <span id="summary-price" class="text-brand font-black text-lg">₹0</span>
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+                        <h3 class="font-bold text-slate-900 mb-4">Order Summary</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between text-slate-700"><span class="text-slate-500">Course:</span> <span id="summary-course" class="font-bold text-slate-900">--</span></div>
+                            <div class="flex justify-between text-slate-700"><span class="text-slate-500">Group Size:</span> <span id="summary-group" class="font-semibold">--</span></div>
+                            <div class="flex justify-between text-slate-700"><span class="text-slate-500">Timing:</span> <span id="summary-timing" class="font-semibold">--</span></div>
+                            <div class="border-t border-slate-200 my-2 pt-3 flex justify-between items-center">
+                                <span class="text-slate-900 font-bold">Total Amount:</span> 
+                                <span id="summary-price" class="text-brand font-black text-xl">₹0</span>
                             </div>
                         </div>
-                        <ul class="mt-4 space-y-1 text-xs text-slate-500">
-                            <li>✓ Live Classes</li>
-                            <li>✓ Study Materials Included</li>
-                            <li>✓ Course Certificate</li>
+                        <ul class="mt-6 space-y-2 text-xs text-slate-500 font-medium border-t border-slate-200 pt-4">
+                            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Live Classes</li>
+                            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Study Materials Included</li>
+                            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Course Certificate</li>
                         </ul>
                     </div>
 
-                    <div class="flex flex-col items-center">
-                        <div class="bg-white p-2 rounded-xl mb-4 w-48 h-48">
-                            <img src="assets/qrcode.jpeg" alt="UPI QR Code" class="w-full h-full object-cover rounded-lg bg-gray-200" onerror="this.src='https://via.placeholder.com/200x200.png?text=Scan+To+Pay'">
+                    <div class="flex flex-col items-center justify-center">
+                        <div class="bg-white p-2 border border-slate-200 rounded-xl mb-4 w-48 h-48 shadow-sm">
+                            <img src="qr-code.jpeg" alt="UPI QR Code" class="w-full h-full object-cover rounded-lg bg-slate-100" onerror="this.src='https://via.placeholder.com/200x200.png?text=Scan+To+Pay'">
                         </div>
                         <div class="text-center mb-6">
-                            <p class="text-sm text-slate-400">Or pay via UPI ID:</p>
-                            <p class="font-bold text-white font-mono bg-slate-800 px-3 py-1 rounded mt-1 select-all">9440977111@ybl</p>
+                            <p class="text-sm text-slate-500">Or pay via UPI ID:</p>
+                            <p class="font-bold text-slate-900 font-mono bg-slate-100 px-3 py-1.5 rounded mt-1 select-all border border-slate-200">9440977111@ybl</p>
                         </div>
                         
                         <div class="w-full">
-                            <label class="block text-sm font-medium text-brand mb-1">Enter UTR / Transaction ID *</label>
-                            <input type="text" id="txnId" placeholder="e.g. 301234567890" class="w-full bg-brand/5 border border-brand/50 rounded-xl p-3 text-white focus:ring-1 focus:ring-brand outline-none transition" required>
+                            <label class="block text-sm font-bold text-slate-700 mb-1">Enter UTR / Transaction ID *</label>
+                            <input type="text" id="txnId" placeholder="e.g. 301234567890" class="w-full bg-white border border-slate-300 rounded-xl p-3.5 text-slate-900 focus:ring-1 focus:ring-brand focus:border-brand outline-none transition" required>
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-8 flex justify-between">
-                    <button type="button" onclick="prevStep(3)" class="px-6 py-3 text-slate-400 hover:text-white transition">Back</button>
-                    <button type="submit" id="submitBtn" class="px-8 py-3 bg-gradient-to-r from-brand to-rose-600 font-bold text-white rounded-xl hover:shadow-lg transition">Complete Enrollment</button>
+                <div class="mt-8 flex justify-between items-center">
+                    <button type="button" onclick="prevStep(3)" class="px-6 py-3 text-slate-500 font-medium hover:text-slate-900 transition">Back</button>
+                    <button type="submit" id="submitBtn" class="px-8 py-3 bg-brand font-bold text-white rounded-xl hover:bg-brandDark transition shadow-lg">Complete Enrollment</button>
                 </div>
             </div>
 
-            <div id="step-success" class="step-content text-center py-8">
-                <div class="w-20 h-20 mx-auto bg-green-500/20 text-green-500 rounded-full flex items-center justify-center text-4xl mb-4">✓</div>
-                <h2 class="text-3xl font-black text-white mb-2">Enrollment Received!</h2>
-                <p class="text-slate-400 max-w-md mx-auto mb-6">Thank you for registering. We are verifying your payment and will send the study materials and class link to your WhatsApp shortly.</p>
-                <a href="index.html" class="px-6 py-3 border border-slate-600 rounded-xl text-white hover:bg-slate-800 transition">Back to Home</a>
+            <div id="step-success" class="step-content text-center py-12">
+                <div class="w-20 h-20 mx-auto bg-green-50 text-green-500 rounded-full flex items-center justify-center mb-6">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h2 class="text-3xl font-black text-slate-900 mb-2">Enrollment Received</h2>
+                <p class="text-slate-600 max-w-md mx-auto mb-8">Thank you for registering. We are verifying your payment and will send the study materials and class link to your WhatsApp shortly.</p>
+                <a href="index.html" class="px-8 py-3 border border-slate-300 font-bold rounded-xl text-slate-700 hover:bg-slate-50 transition">Back to Home</a>
             </div>
 
         </form>
@@ -236,21 +336,30 @@
   </section>
 
   <script>
+    // --- SMART INVENTORY SYSTEM (Update these numbers as seats fill up) ---
+    // If seats = 0, the option will be disabled and marked as FULL automatically.
+    const batchInventory = {
+        'A1_6PM': { level: 'A1', label: '06/04/2026 [Monday] - 6:00 to 7:00 PM', seats10: 10, seats6: 6 },
+        'A1_7PM': { level: 'A1', label: '06/04/2026 [Monday] - 7:00 to 8:00 PM', seats10: 10, seats6: 6 },
+        'A2_8PM': { level: 'A2', label: '13/04/2026 [Monday] - 8:00 to 9:00 PM', seats10: 10, seats6: 6 },
+        'B1_9PM': { level: 'B1', label: '20/04/2026 [Monday] - 9:00 to 10:00 PM', seats10: 10, seats6: 6 }
+    };
+
     // --- Data & Pricing Logic ---
     const pricingData = {
-        5: { // 5 Students per group
-            'A1': 10000, 'A2': 12000, 'B1': 15000, 'B2': 18000, 'C1': 21000, 'C2': 24000,
-            'A1+A2': 20000, 'A1+A2+B1': 35000, 'A1+A2+B1+B2': 50000, 'A1+A2+B1+B2+C1': 70000, 'A1+A2+B1+B2+C1+C2': 90000
+        10: { // 10 Students per group (Standard Pricing)
+            'A1': 10000, 'A2': 12000, 'B1': 15000,
+            'A1+A2': 20000, 'A1+A2+B1': 35000
         },
-        3: { // 3 Students per group
-            'A1': 12000, 'A2': 14250, 'B1': 17250, 'B2': 20250, 'C1': 23250, 'C2': 26250,
-            'A1+A2': 24000, 'A1+A2+B1': 39750, 'A1+A2+B1+B2': 60000, 'A1+A2+B1+B2+C1': 78750, 'A1+A2+B1+B2+C1+C2': 97500
+        6: { // 6 Students per group (Premium Pricing)
+            'A1': 12000, 'A2': 14250, 'B1': 17250,
+            'A1+A2': 24000, 'A1+A2+B1': 39750
         }
     };
 
     const courseLabels = {
-        'A1': '1 Month', 'A2': '1 Month', 'B1': '45 Days', 'B2': '45 Days', 'C1': '2 Months', 'C2': '2 Months',
-        'A1+A2': '2 Months', 'A1+A2+B1': '3.5 Months', 'A1+A2+B1+B2': '5 Months', 'A1+A2+B1+B2+C1': '7 Months', 'A1+A2+B1+B2+C1+C2': '9 Months'
+        'A1': '1 Month', 'A2': '1 Month', 'B1': '45 Days',
+        'A1+A2': '2 Months', 'A1+A2+B1': '3.5 Months'
     };
 
     // --- UI Initialization ---
@@ -258,18 +367,19 @@
         const singleContainer = document.getElementById('single-levels');
         const comboContainer = document.getElementById('combo-levels');
         
-        const singles = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-        const combos = ['A1+A2', 'A1+A2+B1', 'A1+A2+B1+B2', 'A1+A2+B1+B2+C1', 'A1+A2+B1+B2+C1+C2'];
+        // Limited available levels based on current batches
+        const singles = ['A1', 'A2', 'B1'];
+        const combos = ['A1+A2', 'A1+A2+B1'];
 
         const createHTML = (lvl) => `
             <label class="custom-radio cursor-pointer">
-                <input type="radio" name="courseLevel" value="${lvl}" class="sr-only" onchange="updatePriceDisplay()">
-                <div class="border border-slate-700 rounded-xl p-3 flex justify-between items-center transition hover:bg-white/5">
+                <input type="radio" name="courseLevel" value="${lvl}" class="sr-only" onchange="updatePriceAndTimings()">
+                <div class="bg-white border border-slate-200 rounded-xl p-3.5 flex justify-between items-center transition hover:bg-slate-50">
                     <div>
-                        <div class="font-bold text-white">${lvl}</div>
-                        <div class="text-xs text-slate-400">${courseLabels[lvl]}</div>
+                        <div class="font-bold text-slate-900">${lvl}</div>
+                        <div class="text-xs text-slate-500 mt-0.5">${courseLabels[lvl]}</div>
                     </div>
-                    <div class="w-4 h-4 rounded-full border-2 border-slate-500 flex items-center justify-center radio-dot transition"></div>
+                    <div class="w-4 h-4 rounded-full border-2 border-slate-300 flex items-center justify-center radio-dot transition"></div>
                 </div>
             </label>
         `;
@@ -289,26 +399,61 @@
         return { course, group };
     }
 
-    function updatePriceDisplay() {
+    function updatePriceAndTimings() {
         const { course, group } = getSelectedValues();
-        const priceEl = document.getElementById('live-price');
         
+        // 1. Update Price
+        const priceEl = document.getElementById('live-price');
         if (course && group && pricingData[group][course]) {
             const price = pricingData[group][course];
             priceEl.innerText = `₹${price.toLocaleString('en-IN')}`;
         } else {
             priceEl.innerText = '₹0';
         }
+
+        // 2. Update Timings Dropdown Dynamically
+        const timingSelect = document.getElementById('timingSelect');
+        timingSelect.innerHTML = '<option value="">-- Select a Batch --</option>';
+
+        if (course) {
+            // If combo (A1+A2), they must start with the first level (A1)
+            let startingLevel = course.includes('+') ? course.split('+')[0] : course;
+
+            let matchesFound = false;
+            for (const [id, data] of Object.entries(batchInventory)) {
+                if (data.level === startingLevel) {
+                    matchesFound = true;
+                    // Check seats based on selected group size
+                    const availableSeats = group == 10 ? data.seats10 : data.seats6;
+                    const isFull = availableSeats <= 0;
+                    
+                    const option = document.createElement('option');
+                    option.value = id;
+                    option.disabled = isFull;
+                    
+                    if (isFull) {
+                        option.innerText = `${data.label} — (FULL)`;
+                    } else {
+                        // Optional: Show exact seats left if you want -> `... (${availableSeats} seats left)`
+                        option.innerText = `${data.label}`;
+                    }
+                    timingSelect.appendChild(option);
+                }
+            }
+
+            if (!matchesFound) {
+                timingSelect.innerHTML = `<option value="">No batches currently open for ${startingLevel}</option>`;
+            }
+        }
     }
 
     // --- Navigation Logic ---
     function nextStep(step) {
-        // Validation before proceeding
         if (step === 2) {
             if (!document.querySelector('input[name="courseLevel"]:checked')) { alert("Please select a course level."); return; }
         }
         if (step === 3) {
-            if (!document.getElementById('timingSelect').value) { alert("Please select a preferred timing."); return; }
+            if (!document.getElementById('timingSelect').value) { alert("Please select an available timing batch."); return; }
         }
         if (step === 4) {
             const name = document.getElementById('studentName').value;
@@ -317,7 +462,6 @@
             const addr = document.getElementById('studentAddress').value;
             if(!name || !email || !phone || !addr) { alert("Please fill all contact details."); return; }
             
-            // Populate Summary
             const { course, group } = getSelectedValues();
             const timingText = document.getElementById('timingSelect').options[document.getElementById('timingSelect').selectedIndex].text;
             document.getElementById('summary-course').innerText = course;
@@ -330,6 +474,7 @@
         document.getElementById(`step-${step}`).classList.add('step-active');
         currentStep = step;
         updateProgressBar();
+        window.scrollTo({ top: document.getElementById('booking-funnel').offsetTop - 100, behavior: 'smooth' });
     }
 
     function prevStep(step) {
@@ -337,6 +482,7 @@
         document.getElementById(`step-${step}`).classList.add('step-active');
         currentStep = step;
         updateProgressBar();
+        window.scrollTo({ top: document.getElementById('booking-funnel').offsetTop - 100, behavior: 'smooth' });
     }
 
     function updateProgressBar() {
@@ -346,13 +492,13 @@
         for(let i=1; i<=4; i++) {
             const ind = document.getElementById(`ind-${i}`);
             if (i < currentStep) {
-                ind.className = "w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm step-indicator";
-                ind.innerHTML = "✓";
+                ind.className = "w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm step-indicator shadow-md";
+                ind.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>`;
             } else if (i === currentStep) {
-                ind.className = "w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm step-indicator ring-4 ring-brand/20";
+                ind.className = "w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-sm step-indicator ring-4 ring-brand/20 shadow-md";
                 ind.innerHTML = i;
             } else {
-                ind.className = "w-8 h-8 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center font-bold text-sm step-indicator border border-slate-700";
+                ind.className = "w-8 h-8 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center font-bold text-sm step-indicator border border-slate-300";
                 ind.innerHTML = i;
             }
         }
@@ -367,11 +513,10 @@
         btn.innerText = "Processing...";
         btn.disabled = true;
 
-        // Data Collection
         const formData = {
             course: document.querySelector('input[name="courseLevel"]:checked').value,
             groupSize: document.querySelector('input[name="groupSize"]:checked').value,
-            timing: document.getElementById('timingSelect').value,
+            timing: document.getElementById('timingSelect').options[document.getElementById('timingSelect').selectedIndex].text,
             name: document.getElementById('studentName').value,
             email: document.getElementById('studentEmail').value,
             phone: document.getElementById('studentPhone').value,
@@ -380,14 +525,6 @@
             amount: document.getElementById('summary-price').innerText
         };
 
-        /* ========================================================
-        Backend Integration Point (Google Apps Script Webhook)
-        ========================================================
-        Uncomment the code below once you have created your 
-        Google Apps Script Web App URL and replace 'YOUR_URL_HERE'
-        */
-        
-        
         fetch('https://script.google.com/macros/s/AKfycbzoQWt-4-ueK__9OYecQLHBaCxOYbkODIo8cL5LKOLE8QQ6tXN9IZ6d52n_DSV47ztu/exec', {
             method: 'POST',
             mode: 'no-cors',
@@ -397,19 +534,15 @@
             showSuccess();
         }).catch((err) => {
             console.error(err);
-            // Even if fetch fails due to CORS, GAS often still records the row.
             showSuccess();
         });
-        
-
-        // Simulated delay for demo purposes
-        setTimeout(() => { showSuccess(); }, 1500);
     }
 
     function showSuccess() {
-        document.querySelector('.relative').classList.add('hidden'); // Hide progress bar
+        document.querySelector('.relative').classList.add('hidden'); // Hide progress bar tracking
         document.querySelectorAll('.step-content').forEach(el => el.classList.remove('step-active'));
         document.getElementById('step-success').classList.add('step-active');
+        window.scrollTo({ top: document.getElementById('booking-funnel').offsetTop - 100, behavior: 'smooth' });
     }
   </script>
 </body>
